@@ -1,0 +1,15 @@
+# =====================================================================
+# data/restrictions.csv
+# Long format: optional supplementary restrictions beyond the primary
+# fields in herbicides.csv. Use this for restrictions that don't fit a
+# single column, with verbatim source text for audit.
+#
+#   restriction_type:
+#       grazing_general | hay_general | manure_runoff | water_buffer |
+#       seedling_alfalfa | seedling_clover | spot_treatment | other
+#   value: short structured value (days, "yes", buffer feet, etc.)
+#   source_text: verbatim guide quote
+# =====================================================================
+unique_id,restriction_type,value,source_text
+# IPM-001,grazing_general,0,"No grazing restriction for non-lactating animals"
+# IPM-001,water_buffer,25,"Maintain 25-ft setback from surface water"
