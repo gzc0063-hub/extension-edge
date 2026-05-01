@@ -29,6 +29,7 @@ from engine import (
 from scorer import rank_by_efficacy, select_best
 from explainer import render
 from pdf_report import build as build_pdf
+from report_store import save_report
 from labels import (
     APP_NAME,
     FORAGE_LABELS,
@@ -68,6 +69,8 @@ if "ui_data" not in st.session_state:
     st.session_state.ui_data = {}
 if "submitted_once" not in st.session_state:
     st.session_state.submitted_once = False
+if "report_backup_saved" not in st.session_state:
+    st.session_state.report_backup_saved = False
 
 
 @st.cache_data(show_spinner=False)
@@ -95,12 +98,28 @@ def _format_list(values: list[str], labeler) -> str:
 def _save_form(data: dict[str, Any]) -> None:
     st.session_state.ui_data = data
     st.session_state.submitted_once = True
+    st.session_state.report_backup_saved = False
 
 
 ALL_WEED_OPTIONS = sorted(
     set(MOWING_RULES.keys()) - {"_default"} | {"bermudagrass", "marestail", "nutsedge", "ragweed"},
     key=weed_label,
 )
+
+ALABAMA_COUNTIES = [
+    "Prefer not to say / outside Alabama",
+    "Autauga", "Baldwin", "Barbour", "Bibb", "Blount", "Bullock", "Butler",
+    "Calhoun", "Chambers", "Cherokee", "Chilton", "Choctaw", "Clarke", "Clay",
+    "Cleburne", "Coffee", "Colbert", "Conecuh", "Coosa", "Covington",
+    "Crenshaw", "Cullman", "Dale", "Dallas", "DeKalb", "Elmore", "Escambia",
+    "Etowah", "Fayette", "Franklin", "Geneva", "Greene", "Hale", "Henry",
+    "Houston", "Jackson", "Jefferson", "Lamar", "Lauderdale", "Lawrence",
+    "Lee", "Limestone", "Lowndes", "Macon", "Madison", "Marengo", "Marion",
+    "Marshall", "Mobile", "Monroe", "Montgomery", "Morgan", "Perry",
+    "Pickens", "Pike", "Randolph", "Russell", "Shelby", "St. Clair",
+    "Sumter", "Talladega", "Tallapoosa", "Tuscaloosa", "Walker",
+    "Washington", "Wilcox", "Winston",
+]
 
 
 def _inject_css() -> None:
@@ -398,7 +417,13 @@ def _render_input_form() -> None:
         )
         farm_name = st.text_input("Farm name, optional", value=d.get("farm_name", ""))
         operator_name = st.text_input("Operator name, optional", value=d.get("operator_name", ""))
-        location = st.text_input("County or location, optional", value=d.get("location", ""))
+        saved_county = d.get("location", "Prefer not to say / outside Alabama")
+        county = st.selectbox(
+            "County for usage reporting",
+            ALABAMA_COUNTIES,
+            index=ALABAMA_COUNTIES.index(saved_county) if saved_county in ALABAMA_COUNTIES else 0,
+            help="Used only to summarize where the tool is being used. This also appears in the PDF record.",
+        )
 
         st.markdown('<div class="section-band"><h2>Weeds of interest</h2></div>', unsafe_allow_html=True)
         weeds = st.multiselect(
@@ -508,7 +533,7 @@ def _render_input_form() -> None:
                 "rup_status": rup_status,
                 "farm_name": farm_name,
                 "operator_name": operator_name,
-                "location": location,
+                "location": county,
             }
         )
 
@@ -573,6 +598,12 @@ def show_result() -> None:
             st.markdown("### Recommendation report")
         with rec_download:
             pdf_bytes = build_pdf(result, ui, narrative)
+            if not st.session_state.report_backup_saved:
+                saved, message = save_report(result, ui, narrative, pdf_bytes)
+                if saved:
+                    st.session_state.report_backup_saved = True
+                else:
+                    st.warning(f"Report backup could not be saved: {message}")
             st.download_button(
                 "Download PDF record",
                 data=pdf_bytes,

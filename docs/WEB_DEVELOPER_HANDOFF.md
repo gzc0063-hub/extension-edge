@@ -15,6 +15,7 @@ Supporting modules:
 - `scorer.py` ranks products by efficacy.
 - `explainer.py` writes deterministic recommendation text.
 - `pdf_report.py` builds the downloadable PDF record.
+- `report_store.py` optionally stores usage analytics and private PDF report backups.
 - `labels.py` stores farmer-facing labels for internal codes.
 
 ## User Interface Requirements
@@ -47,6 +48,8 @@ build_pdf(...)
 ```
 
 Do not put recommendation logic into Streamlit controls. The interface should only collect inputs, call the pipeline, and render outputs.
+
+When report storage is configured, `report_store.save_report(...)` runs after the PDF bytes are created. It stores one row per submitted recommendation and uploads one PDF backup using the same field ID shown in the app report.
 
 ## Farmer-Facing Labels
 
@@ -104,4 +107,4 @@ Recommended deployment path:
 3. Create a new app using the GitHub repo, branch `main`, and main file `app.py`.
 4. Share the resulting Streamlit URL with Dr. Russell.
 
-No API keys or secrets are required.
+No API keys or secrets are required for recommendations. Optional Supabase secrets can be added in Streamlit Cloud to enable usage counts, county summaries, and PDF backups. See `docs/REPORT_STORAGE_SETUP.md`.

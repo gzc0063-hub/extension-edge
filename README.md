@@ -31,12 +31,14 @@ extension-edge/
 ├── scorer.py               # Priority-weighted lexicographic ranking
 ├── explainer.py            # Deterministic template text generator
 ├── pdf_report.py           # ReportLab spray record
+├── report_store.py         # Optional Supabase analytics/PDF backups
 ├── requirements.txt
 ├── README.md
 ├── docs/
 │   ├── DR_RUSSELL_REVIEW_BRIEF.md
 │   ├── WEB_DEVELOPER_HANDOFF.md
-│   └── MAINTENANCE_GUIDE.md
+│   ├── MAINTENANCE_GUIDE.md
+│   └── REPORT_STORAGE_SETUP.md
 ├── .gitignore
 ├── .streamlit/
 │   └── config.toml
@@ -61,21 +63,24 @@ user input
                                       └─► pdf_report.build()
 ```
 
-No AI calls. No external APIs. Same inputs always produce the same output.
+No AI calls. Recommendation decisions are deterministic: same inputs always produce the same output. Optional Supabase storage can be configured for report backups and usage summaries.
 
 ---
 
 ## Documentation
 
-The project includes three current handoff documents:
+The project includes current handoff and operations documents:
 
 | Document | Use it for |
 |---|---|
 | [`docs/DR_RUSSELL_REVIEW_BRIEF.md`](docs/DR_RUSSELL_REVIEW_BRIEF.md) | Review brief for Dr. David Russell, including purpose, source attribution, compliance posture, and review requests. |
 | [`docs/WEB_DEVELOPER_HANDOFF.md`](docs/WEB_DEVELOPER_HANDOFF.md) | Web developer handoff for Streamlit UI, data flow, labels, PDF behavior, and deployment. |
 | [`docs/MAINTENANCE_GUIDE.md`](docs/MAINTENANCE_GUIDE.md) | Maintenance workflow for annual IPM updates, source audits, data updates, testing, and deployment. |
+| [`docs/REPORT_STORAGE_SETUP.md`](docs/REPORT_STORAGE_SETUP.md) | Optional Supabase setup for usage counts, county summaries, and private PDF report backups. |
 
 PDF copies of each document are also stored in `docs/` for sharing with reviewers.
+
+When optional Supabase secrets are configured, each submitted recommendation is backed up with county-level analytics metadata and a private PDF report copy. See [`docs/REPORT_STORAGE_SETUP.md`](docs/REPORT_STORAGE_SETUP.md).
 
 ---
 
@@ -124,10 +129,12 @@ The suite covers the five critical scenarios from the specification:
 1. Push this repo to GitHub (public).
 2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub.
 3. **New app** → select the `extension-edge` repo → branch `main` → main file `app.py`.
-4. Click **Deploy**. No secrets, no API keys.
+4. Click **Deploy**. No secrets are required for the recommendation engine.
 5. Public URL: `https://<your-username>-extension-edge.streamlit.app`
 
 Every push to `main` redeploys automatically within seconds.
+
+To enable report analytics and PDF backups, add the optional Streamlit secrets described in [`docs/REPORT_STORAGE_SETUP.md`](docs/REPORT_STORAGE_SETUP.md).
 
 ---
 

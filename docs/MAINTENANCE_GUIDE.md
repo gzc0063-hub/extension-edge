@@ -89,6 +89,7 @@ Current deliverables:
 - The PDF report downloads from the recommendation section.
 - The generated report uses Extension Edge and farmer-facing labels.
 - The Extension Edge name and Gourav Chahal spelling are used in all user-facing files.
+- If Supabase report storage is enabled, a test recommendation creates one metadata row and one PDF backup.
 
 ## Common Fixes
 
@@ -112,3 +113,10 @@ No public link available:
 - Push the project to GitHub.
 - Deploy through Streamlit Community Cloud.
 - Share the Streamlit Cloud URL, not the local `localhost` URL.
+
+Analytics or report backups missing:
+
+- Confirm Streamlit Cloud secrets include `[report_storage]`.
+- Confirm `supabase_schema.sql` was run in the Supabase SQL editor.
+- Confirm the `extension-edge-reports` bucket exists and is private.
+- Submit a new recommendation; storage runs when the report is generated.
