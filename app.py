@@ -215,7 +215,26 @@ def _inject_css() -> None:
         div.stDownloadButton > button[kind="primary"] {{
             background: var(--auburn-orange);
             border-color: var(--auburn-orange);
-            color: #ffffff;
+            color: var(--auburn-blue);
+        }}
+        div.stButton > button[kind="primary"]:hover,
+        div.stDownloadButton > button[kind="primary"]:hover {{
+            background: #D96A1B;
+            border-color: #D96A1B;
+            color: var(--auburn-blue);
+        }}
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        [role="button"]:focus-visible,
+        [role="combobox"]:focus-visible {{
+            outline: 3px solid var(--aces-green) !important;
+            outline-offset: 2px !important;
+            box-shadow: none !important;
+        }}
+        div[data-baseweb="select"] > div:focus-within {{
+            border-color: var(--aces-green) !important;
+            box-shadow: 0 0 0 3px rgba(47, 107, 63, 0.28) !important;
         }}
         div[data-testid="stForm"] {{
             border: 0;
