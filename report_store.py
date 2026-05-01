@@ -11,6 +11,7 @@ import json
 import math
 from dataclasses import dataclass
 from typing import Any
+from urllib.parse import urlparse
 
 import pandas as pd
 import requests
@@ -36,12 +37,32 @@ def _secret_section() -> dict[str, Any]:
     return dict(section) if section else {}
 
 
+def _normalize_url(raw_url: str) -> str | None:
+    url = str(raw_url or "").strip().rstrip("/")
+    if not url:
+        return None
+    if "://" not in url and "." in url:
+        url = f"https://{url}"
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return None
+    return url
+
+
 def get_config() -> ReportStorageConfig | None:
     section = _secret_section()
-    url = str(section.get("url", "")).rstrip("/")
+    raw_url = str(section.get("url", ""))
+    url = _normalize_url(raw_url)
     key = str(section.get("service_role_key", ""))
-    if not url or not key:
+    if not raw_url and not key:
         return None
+    if not url:
+        raise ValueError(
+            "Report storage URL is invalid. In Streamlit secrets, use the Supabase Project URL, "
+            "for example: https://your-project-ref.supabase.co"
+        )
+    if not key:
+        raise ValueError("Report storage service_role_key is missing in Streamlit secrets.")
     return ReportStorageConfig(
         url=url,
         service_role_key=key,
@@ -51,7 +72,10 @@ def get_config() -> ReportStorageConfig | None:
 
 
 def is_configured() -> bool:
-    return get_config() is not None
+    try:
+        return get_config() is not None
+    except ValueError:
+        return False
 
 
 def _headers(config: ReportStorageConfig, content_type: str = "application/json") -> dict[str, str]:
@@ -126,7 +150,10 @@ def save_report(result: Result, ui, narrative: str, pdf_bytes: bytes) -> tuple[b
     Returns (saved, message). If storage is not configured, returns a successful
     no-op so the public app does not bother growers with admin setup details.
     """
-    config = get_config()
+    try:
+        config = get_config()
+    except ValueError as exc:
+        return False, str(exc)
     if config is None:
         return True, "Report storage not configured; skipped remote backup."
 
@@ -137,7 +164,10 @@ def save_report(result: Result, ui, narrative: str, pdf_bytes: bytes) -> tuple[b
     upload_url = f"{config.url}/storage/v1/object/{config.bucket}/{pdf_path}"
     upload_headers = _headers(config, "application/pdf")
     upload_headers["x-upsert"] = "true"
-    upload = requests.post(upload_url, headers=upload_headers, data=pdf_bytes, timeout=20)
+    try:
+        upload = requests.post(upload_url, headers=upload_headers, data=pdf_bytes, timeout=20)
+    except requests.RequestException as exc:
+        return False, f"PDF backup request failed: {exc}"
     if upload.status_code >= 300:
         return False, f"PDF backup failed ({upload.status_code}): {upload.text[:180]}"
 
@@ -162,7 +192,10 @@ def save_report(result: Result, ui, narrative: str, pdf_bytes: bytes) -> tuple[b
     insert_url = f"{config.url}/rest/v1/{config.table}"
     insert_headers = _headers(config)
     insert_headers["Prefer"] = "return=minimal"
-    insert = requests.post(insert_url, headers=insert_headers, data=json.dumps(_clean_json(row)), timeout=20)
+    try:
+        insert = requests.post(insert_url, headers=insert_headers, data=json.dumps(_clean_json(row)), timeout=20)
+    except requests.RequestException as exc:
+        return False, f"Metadata save request failed: {exc}"
     if insert.status_code >= 300:
         return False, f"Metadata save failed ({insert.status_code}): {insert.text[:180]}"
 
