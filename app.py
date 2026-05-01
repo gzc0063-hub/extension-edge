@@ -568,21 +568,22 @@ def show_result() -> None:
     tab_rec, tab_fail, tab_review = st.tabs(["Recommendation", "Why others failed", "Manual review"])
 
     with tab_rec:
+        rec_head, rec_download = st.columns([1, 1])
+        with rec_head:
+            st.markdown("### Recommendation report")
+        with rec_download:
+            pdf_bytes = build_pdf(result, ui, narrative)
+            st.download_button(
+                "Download PDF record",
+                data=pdf_bytes,
+                file_name=f"extension-edge-{result.field_id}.pdf",
+                mime="application/pdf",
+                type="primary",
+                use_container_width=True,
+            )
         st.write(narrative)
         if result.best:
-            left, right = st.columns([1, 1])
-            with left:
-                st.markdown("### Primary recommendation")
-            with right:
-                pdf_bytes = build_pdf(result, ui, narrative)
-                st.download_button(
-                    "Download PDF record",
-                    data=pdf_bytes,
-                    file_name=f"extension-edge-{result.field_id}.pdf",
-                    mime="application/pdf",
-                    type="primary",
-                    use_container_width=True,
-                )
+            st.markdown("### Primary recommendation")
             _display_product(result.best)
         if result.backup:
             st.markdown("### Backup option")
