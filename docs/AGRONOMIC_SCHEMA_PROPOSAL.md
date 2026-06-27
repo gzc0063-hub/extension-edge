@@ -69,3 +69,15 @@ Following review of the Soybean Weed Control guide, additional constraints are m
   "comments": "RESTRICTED USE PRODUCT. Mandatory training required."
 }
 ```
+
+## 5. Row Crop Weed Schema Updates (Agronomist Additions)
+Per direct guidance from the Agronomist, row crop weed control fundamentally requires evaluating soil conditions and long-term crop rotation plans. If these are ignored, it can result in severe crop injury or illegal chemical carryover.
+
+### Additional Fields Required in Schema
+- **`soil_texture_restriction`**: Text warning if the product cannot be used on Sand/Coarse or Clay/Fine soils, or requires specific Organic Matter percentages.
+- **`plantback_restriction`**: Information detailing how many months the grower must wait before planting a specific *different* crop.
+- **`application_type`**: Expanded to include `BURNDOWN` (Winter/Spring pre-plant applications).
+
+### Engine Execution Rules
+1. If the tool is screening PRE herbicides for row crops, it **must** ask the grower for their Soil Texture. If it is omitted, the engine **must** flag the recommendation with a "Check Label for Soil Restrictions" warning.
+2. The tool **must** ask the grower what crop they intend to plant *next season*. The engine will display any `plantback_restriction` text so the grower is aware of carryover risks.

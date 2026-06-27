@@ -1,0 +1,32 @@
+[
+  {
+    "unique_id": "IPM-COT-WEED-01",
+    "trade_name": "XtendiMax",
+    "active_ingredient": "dicamba",
+    "herbicide_group": "4",
+    "application_type": "POST",
+    "seed_trait_required": "xtend",
+    "soil_texture_restriction": null,
+    "plantback_restriction": "None",
+    "phi_days": 7,
+    "rup_flag": true,
+    "rate_per_acre": "22 fl.oz.",
+    "efficacy": { "palmer_amaranth": "E", "morningglory": "E", "crabgrass": "N" },
+    "comments": "RESTRICTED USE. Xtend cotton ONLY."
+  },
+  {
+    "unique_id": "IPM-COT-WEED-02",
+    "trade_name": "Reflex",
+    "active_ingredient": "fomesafen",
+    "herbicide_group": "14",
+    "application_type": "PRE",
+    "seed_trait_required": "conventional",
+    "soil_texture_restriction": null,
+    "plantback_restriction": "10 months for corn.",
+    "phi_days": 70,
+    "rup_flag": false,
+    "rate_per_acre": "1 pt",
+    "efficacy": { "palmer_amaranth": "E", "morningglory": "G", "crabgrass": "N" },
+    "comments": "Do not apply in successive years."
+  }
+]

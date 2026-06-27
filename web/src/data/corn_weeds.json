@@ -1,0 +1,30 @@
+[
+  {
+    "unique_id": "IPM-CORN-WEED-01",
+    "trade_name": "AAtrex 4L / Atrazine 4L",
+    "active_ingredient": "atrazine",
+    "herbicide_group": "5",
+    "application_type": "PRE",
+    "soil_texture_restriction": "Do not apply on coarse soils (sand, loamy sand, sandy loam) with less than 1% organic matter.",
+    "plantback_restriction": "Cannot plant cotton or soybeans if applied after June 10.",
+    "phi_days": 60,
+    "rup_flag": true,
+    "rate_per_acre": "1-2 qt",
+    "efficacy": { "palmer_amaranth": "E", "morningglory": "G", "crabgrass": "P" },
+    "comments": "Maximum 2.5 lbs a.i./acre per year."
+  },
+  {
+    "unique_id": "IPM-CORN-WEED-02",
+    "trade_name": "Dual Magnum",
+    "active_ingredient": "S-metolachlor",
+    "herbicide_group": "15",
+    "application_type": "PRE",
+    "soil_texture_restriction": "Use lower rate on coarse soils. Do not use on muck or peat.",
+    "plantback_restriction": "None for major row crops.",
+    "phi_days": 30,
+    "rup_flag": false,
+    "rate_per_acre": "1-2 pt",
+    "efficacy": { "palmer_amaranth": "G", "morningglory": "P", "crabgrass": "E" },
+    "comments": "Must be incorporated by rainfall or irrigation."
+  }
+]
