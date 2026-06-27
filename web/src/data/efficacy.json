@@ -1,0 +1,2870 @@
+[
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "spiny_amaranth",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "bitterweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "buttercup",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "wooly_croton",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "dogfennel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "goldenrod",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "henbit",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "horseweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "ironweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "jimsonweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "perilla_mint",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "pigweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "plantain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "prickly_sida",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "smartweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "thistle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "blue_vervain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "wild_garlic",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-006",
+    "weed_id": "wild_mustard",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "dogfennel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "jimsonweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "lambsquarters",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "perilla_mint",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "prickly_sida",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "red_sorrel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "multiflora_rose",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "smartweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-002",
+    "weed_id": "wild_garlic",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "dogfennel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "jimsonweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "lambsquarters",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "perilla_mint",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "prickly_sida",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "red_sorrel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "multiflora_rose",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "smartweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-011",
+    "weed_id": "wild_garlic",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "blackberry",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "buttercup",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "cherokee_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "dogfennel",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "ground_cherry",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "henbit",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "horsenettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "jimsonweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "multiflora_rose",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "pigweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "prickly_sida",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "red_sorrel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "stinging_nettle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "thistle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "tropical_soda_apple",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-009",
+    "weed_id": "wild_garlic",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "blackberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "dogfennel",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "henbit",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "horsenettle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "ironweed",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "jimsonweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "perilla_mint",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "pigweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "ragweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "red_sorrel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "multiflora_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "thistle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "tropical_soda_apple",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "wild_garlic",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "blackberry",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "buttercup",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "dogfennel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "goldenrod",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "ground_cherry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "henbit",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "horseweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "ironweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "jimsonweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "perilla_mint",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "plantain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "poison_ivy",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "red_sorrel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "multiflora_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "smartweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "stinging_nettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-012",
+    "weed_id": "thistle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "blackberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "dogfennel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "ground_cherry",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "henbit",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "horsenettle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "jimsonweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "milkweed",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "perilla_mint",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "pigweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "ragweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "multiflora_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "prickly_sida",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "smartweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "stinging_nettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "tropical_soda_apple",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "blue_vervain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-014",
+    "weed_id": "wild_mustard",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "showy_crotolaria",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "dogfennel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "goldenrod",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "ground_cherry",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "henbit",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "horsenettle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "horseweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "ironweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "jimsonweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "perilla_mint",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "pigweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "ragweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "multiflora_rose",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "prickly_sida",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "stinging_nettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "thistle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "tropical_soda_apple",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "blue_vervain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-016",
+    "weed_id": "wild_mustard",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "blackberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "showy_crotolaria",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "dewberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "dogfennel",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "ground_cherry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "henbit",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "horsenettle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "ironweed",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "jimsonweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "perilla_mint",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "poison_ivy",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "red_sorrel",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "multiflora_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "prickly_sida",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "stinging_nettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "thistle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "tropical_soda_apple",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "blue_vervain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-019",
+    "weed_id": "wild_mustard",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "buttercup",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "smartweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "wild_mustard",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "spiny_amaranth",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "blackberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "buttercup",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "showy_crotolaria",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "curly_dock",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "dewberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "dogfennel",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "henbit",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "horseweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "milkweed",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "perilla_mint",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "plantain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "ragweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "multiflora_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "smartweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "stinging_nettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-026",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "spiny_amaranth",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "bitterweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "blackberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "buttercup",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "dewberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "dogfennel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "henbit",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "horsenettle",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "horseweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "ironweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "jimsonweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "milkweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "poison_ivy",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "ragweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "multiflora_rose",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "smartweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "stinging_nettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-027",
+    "weed_id": "tropical_soda_apple",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "spiny_amaranth",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "wooly_croton",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "curly_dock",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "ground_cherry",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "horsenettle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "jimsonweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "milkweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "perilla_mint",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "plantain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "red_sorrel",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "prickly_sida",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "stinging_nettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "blue_vervain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-031",
+    "weed_id": "wild_mustard",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "spiny_amaranth",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "buttercup",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "dewberry",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "dogfennel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "goldenrod",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "henbit",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "horsenettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "ironweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "jimsonweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "milkweed",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "perilla_mint",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "plantain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "poison_ivy",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "pricklypear",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "red_sorrel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "multiflora_rose",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "stinging_nettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "thistle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "tropical_soda_apple",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "blue_vervain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-032",
+    "weed_id": "wild_mustard",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "wooly_croton",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "dogfennel",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "goldenrod",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "henbit",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "lambsquarters",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "plantain",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "red_sorrel",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "multiflora_rose",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "prickly_sida",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "stinging_nettle",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-033",
+    "weed_id": "tropical_soda_apple",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "spiny_amaranth",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "horsenettle",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-034",
+    "weed_id": "thistle",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "barnyardgrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "bahiagrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "crabgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "dallisgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "knotroot_foxtail",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "goosegrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "johnsongrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "johnsongrass_seedling",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "fall_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "texas_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "italian_ryegrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "sandbur",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "signalgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-025",
+    "weed_id": "vaseygrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "barnyardgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "crabgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "goosegrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "johnsongrass_seedling",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "fall_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "texas_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "italian_ryegrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "sandbur",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-004",
+    "weed_id": "signalgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "barnyardgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "bahiagrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "crabgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "centipede",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "dallisgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "knotroot_foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "goosegrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "johnsongrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "johnsongrass_seedling",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "nutsedge",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "fall_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "texas_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "sandbur",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "signalgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "smutgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-029",
+    "weed_id": "vaseygrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-024",
+    "weed_id": "centipede",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-024",
+    "weed_id": "johnsongrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-024",
+    "weed_id": "johnsongrass_seedling",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-024",
+    "weed_id": "nutsedge",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "bahiagrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "centipede",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "crabgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "dallisgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "knotroot_foxtail",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "goosegrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "johnsongrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "johnsongrass_seedling",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "nutsedge",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "fall_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "texas_panicum",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "italian_ryegrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "sandbur",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "signalgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-020",
+    "weed_id": "vaseygrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-038",
+    "weed_id": "bahiagrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-038",
+    "weed_id": "buttercup",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-038",
+    "weed_id": "bitter_sneezeweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-038",
+    "weed_id": "pigweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-010",
+    "weed_id": "bahiagrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-041",
+    "weed_id": "horsenettle",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-041",
+    "weed_id": "horseweed",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-041",
+    "weed_id": "buttercup",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-041",
+    "weed_id": "ragweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "crabgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "fall_panicum",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "signalgrass",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "texas_panicum",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "horseweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "redroot_pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "shepherdspurse",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-042",
+    "weed_id": "wild_mustard",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-049",
+    "weed_id": "crabgrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-049",
+    "weed_id": "fall_panicum",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-049",
+    "weed_id": "foxtail",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-049",
+    "weed_id": "signalgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-049",
+    "weed_id": "texas_panicum",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-049",
+    "weed_id": "nutsedge",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "crabgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "fall_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "foxtail",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "signalgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "texas_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "nutsedge",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "bitterweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "buttercup",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "curly_dock",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "horsenettle",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "horseweed",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "plantain",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "redroot_pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-050",
+    "weed_id": "smartweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "crabgrass",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "fall_panicum",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "foxtail",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "signalgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "texas_panicum",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "nutsedge",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "redroot_pigweed",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "curly_dock",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "horseweed",
+    "rating": "P",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "plantain",
+    "rating": "F",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "shepherdspurse",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-052",
+    "weed_id": "wild_mustard",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-053",
+    "weed_id": "crabgrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-053",
+    "weed_id": "fall_panicum",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-053",
+    "weed_id": "foxtail",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-053",
+    "weed_id": "signalgrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-053",
+    "weed_id": "texas_panicum",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-054",
+    "weed_id": "crabgrass",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-054",
+    "weed_id": "fall_panicum",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-054",
+    "weed_id": "foxtail",
+    "rating": "E",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-054",
+    "weed_id": "signalgrass",
+    "rating": "G",
+    "scenario": null
+  },
+  {
+    "unique_id": "IPM-054",
+    "weed_id": "texas_panicum",
+    "rating": "G",
+    "scenario": null
+  }
+]
