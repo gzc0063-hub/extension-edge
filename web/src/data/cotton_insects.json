@@ -1,0 +1,24 @@
+[
+  {
+    "unique_id": "IPM-COTTON-INS-01",
+    "trade_name": "VANTACOR",
+    "active_ingredient": "chlorantraniliprole",
+    "pest_target": "bollworm",
+    "economic_threshold_required": true,
+    "beneficials_safe": true,
+    "phi_days": 21,
+    "rup_flag": false,
+    "rate_per_acre": "1.2-2.5 oz"
+  },
+  {
+    "unique_id": "IPM-COTTON-INS-02",
+    "trade_name": "BESIEGE",
+    "active_ingredient": "chlorantraniliprole + lambda-cyhalothrin",
+    "pest_target": "bollworm",
+    "economic_threshold_required": true,
+    "beneficials_safe": false,
+    "phi_days": 21,
+    "rup_flag": true,
+    "rate_per_acre": "6.5-12.5 oz"
+  }
+]

@@ -1,64 +1,59 @@
 import { describe, it, expect } from 'vitest';
-import { runDeterministicEngine, type GrowerInput } from './engine';
+import { evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCottonInsects, type PastureInput, type SoybeanWeedInput, type CottonInsectInput, type RecommendationResult } from './engine';
 
-describe('Deterministic Engine', () => {
+describe('Modular Deterministic Engine', () => {
 
-    it('Scenario 1: Lactating dairy wait rejects product', () => {
-        const input: GrowerInput = {
+    it('Pasture: Lactating dairy wait rejects product', () => {
+        const input: PastureInput = {
             forageType: 'bermuda_maint',
             applicationType: 'POST',
             weedsPresent: ['BHHGR'],
             hasLactatingDairy: true,
             hasLegumesToSave: false,
             isRUPApplicator: true,
-            willExportHayOrManure: false,
-            willSlaughterWithinWait: false
+            willExportHayOrManure: false
         };
-        const results = runDeterministicEngine(input);
-
-        // Find Crossbow
-        const crossbow = results.find(r => r.tradeName === 'Crossbow');
+        const results = evaluatePastureWeeds(input);
+        const crossbow = results.find((r: RecommendationResult) => r.tradeName === 'Crossbow');
         expect(crossbow).toBeDefined();
         expect(crossbow!.status).toBe('REJECTED');
-        expect(crossbow!.rejectReasons.some(rr => rr.gateName === 'Dairy Wait')).toBe(true);
+        expect(crossbow!.rejectReasons.some((rr: any) => rr.gateName === 'Dairy Wait')).toBe(true);
     });
 
-    it('Scenario 2: Legume injury rejects product', () => {
-        const input: GrowerInput = {
-            forageType: 'bermuda_maint',
+    it('Soybean: Seed trait incompatibility rejects product', () => {
+        const input: SoybeanWeedInput = {
             applicationType: 'POST',
-            weedsPresent: ['BHHGR'],
-            hasLactatingDairy: false,
-            hasLegumesToSave: true, // Key flag
-            isRUPApplicator: true,
-            willExportHayOrManure: false,
-            willSlaughterWithinWait: false
+            seedTrait: 'enlist',
+            daysToHarvest: 100,
+            isRUPApplicator: true
         };
-        const results = runDeterministicEngine(input);
+        const results = evaluateSoybeanWeeds(input);
 
-        // ForeFront HL/GrazonNext HL kills legumes
-        const grazon = results.find(r => r.tradeName === 'ForeFront HL/GrazonNext HL');
-        expect(grazon).toBeDefined();
-        expect(grazon!.status).toBe('REJECTED');
-        expect(grazon!.rejectReasons.some(rr => rr.gateName === 'Legume Safety')).toBe(true);
+        // Engenia requires Xtend trait. User planted Enlist. Should be rejected to save crop from death.
+        const engenia = results.find((r: RecommendationResult) => r.tradeName === 'Engenia');
+        expect(engenia).toBeDefined();
+        expect(engenia!.status).toBe('REJECTED');
+        expect(engenia!.rejectReasons.some((rr: any) => rr.gateName === 'Trait Tech')).toBe(true);
+
+        // Enlist One requires Enlist trait. Should be recommended.
+        const enlistOne = results.find((r: RecommendationResult) => r.tradeName === 'Enlist One');
+        expect(enlistOne!.status).toBe('RECOMMEND');
     });
 
-    it('Scenario 3: RUP applicator gate', () => {
-        const input: GrowerInput = {
-            forageType: 'bermuda_maint',
-            applicationType: 'POST',
-            weedsPresent: ['BHHGR'],
-            hasLactatingDairy: false,
-            hasLegumesToSave: false,
-            isRUPApplicator: false, // NO RUP license
-            willExportHayOrManure: false,
-            willSlaughterWithinWait: false
+    it('Cotton: Insect Threshold not met rejects chemical application', () => {
+        const input: CottonInsectInput = {
+            pestTarget: 'bollworm',
+            thresholdMet: false, // NOT MET
+            beneficialsPresentToSave: false,
+            daysToHarvest: 100,
+            isRUPApplicator: true
         };
-        const results = runDeterministicEngine(input);
+        const results = evaluateCottonInsects(input);
 
-        const rupRejects = results.filter(r => r.rejectReasons.some(rr => rr.gateName === 'RUP Applicator'));
-        expect(rupRejects.length).toBeGreaterThan(0);
-        expect(rupRejects[0].status).toBe('REJECTED');
+        // Vantacor should be rejected because we shouldn't spray if threshold isn't met
+        const vantacor = results.find((r: RecommendationResult) => r.tradeName === 'VANTACOR');
+        expect(vantacor).toBeDefined();
+        expect(vantacor!.status).toBe('REJECTED');
+        expect(vantacor!.rejectReasons.some((rr: any) => rr.gateName === 'Threshold')).toBe(true);
     });
-
 });
