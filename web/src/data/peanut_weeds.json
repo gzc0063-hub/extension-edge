@@ -1,0 +1,30 @@
+[
+  {
+    "unique_id": "IPM-PNUT-WEED-01",
+    "trade_name": "Valor SX",
+    "active_ingredient": "flumioxazin",
+    "herbicide_group": "14",
+    "application_type": "PRE",
+    "soil_texture_restriction": "Severe injury can occur on coarse soils. Check label.",
+    "plantback_restriction": "None for cotton or soybeans.",
+    "phi_days": 0,
+    "rup_flag": false,
+    "rate_per_acre": "3 oz",
+    "efficacy": { "palmer_amaranth": "E", "florida_beggarweed": "G", "sicklepod": "P" },
+    "comments": "Apply within 2 days after planting. Do not apply POST."
+  },
+  {
+    "unique_id": "IPM-PNUT-WEED-02",
+    "trade_name": "Cadre",
+    "active_ingredient": "imazapic",
+    "herbicide_group": "2",
+    "application_type": "POST",
+    "soil_texture_restriction": null,
+    "plantback_restriction": "18 months for cotton. 9 months for corn.",
+    "phi_days": 90,
+    "rup_flag": false,
+    "rate_per_acre": "4 oz",
+    "efficacy": { "palmer_amaranth": "F", "florida_beggarweed": "P", "sicklepod": "E" },
+    "comments": "Use with Non-Ionic Surfactant (NIS)."
+  }
+]

@@ -2,10 +2,12 @@ import herbicidesData from './data/herbicides.json';
 import efficacyData from './data/efficacy.json';
 import soybeanWeedsData from './data/soybean_weeds.json';
 import cottonInsectsData from './data/cotton_insects.json';
+import cornWeedsData from './data/corn_weeds.json';
+import peanutWeedsData from './data/peanut_weeds.json';
+import cottonWeedsData from './data/cotton_weeds.json';
 
-export type GuideType = "pasture_weeds" | "soybean_weeds" | "cotton_insects";
+export type GuideType = "pasture_weeds" | "soybean_weeds" | "cotton_weeds" | "corn_weeds" | "peanut_weeds" | "cotton_insects";
 
-// --- PAsture Inputs ---
 export interface PastureInput {
     forageType: string;
     applicationType: string;
@@ -16,15 +18,16 @@ export interface PastureInput {
     willExportHayOrManure: boolean;
 }
 
-// --- Soybean Weed Inputs ---
-export interface SoybeanWeedInput {
+export interface RowCropWeedInput {
     applicationType: string;
-    seedTrait: 'conventional' | 'roundup_ready' | 'xtend' | 'enlist';
+    seedTrait: string;
+    soilTexture: 'sand' | 'loam' | 'clay' | 'unknown';
+    nextPlannedCrop: string;
     daysToHarvest: number;
     isRUPApplicator: boolean;
+    weedsPresent: string[];
 }
 
-// --- Cotton Insect Inputs ---
 export interface CottonInsectInput {
     pestTarget: string;
     thresholdMet: boolean;
@@ -44,6 +47,7 @@ export interface RecommendationResult {
     rate: string;
     status: 'RECOMMEND' | 'REJECTED' | 'MANUAL_REVIEW';
     rejectReasons: RejectionReason[];
+    warnings: string[];
     efficacyRatings?: Record<string, string>;
 }
 
@@ -51,6 +55,7 @@ export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[
     return herbicidesData.map((herbicide: any) => {
         let status: RecommendationResult['status'] = 'RECOMMEND';
         const rejectReasons: RejectionReason[] = [];
+        const warnings: string[] = [];
 
         if (herbicide.forage_type !== input.forageType) {
             status = 'REJECTED';
@@ -111,28 +116,24 @@ export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[
             rate: herbicide.rate_per_acre,
             status,
             rejectReasons,
+            warnings,
             efficacyRatings
         };
     });
 };
 
-export const evaluateSoybeanWeeds = (input: SoybeanWeedInput): RecommendationResult[] => {
-    return soybeanWeedsData.map((herbicide: any) => {
+export const evaluateRowCropWeeds = (cropData: any[], input: RowCropWeedInput): RecommendationResult[] => {
+    return cropData.map((herbicide: any) => {
         let status: RecommendationResult['status'] = 'RECOMMEND';
         const rejectReasons: RejectionReason[] = [];
+        const warnings: string[] = [];
 
         if (herbicide.application_type !== input.applicationType) {
             status = 'REJECTED';
             rejectReasons.push({ reason: `Not for ${input.applicationType}`, gateName: 'Timing' });
         }
 
-        // Critical Trait Technology Gate
-        if (herbicide.seed_trait_required !== 'conventional' && herbicide.seed_trait_required !== input.seedTrait) {
-            // For example, if Xtend required, but Enlist planted
-            // Exception: Roundup Ready can be sprayed on Xtend or Enlist usually,
-            // but for this strict demo, we match exactly or 'conventional' means safe for all traits usually,
-            // wait, conventional herbicides are safe on traits, but trait herbicides KILL conventional.
-            // Simplified logic for demo:
+        if (herbicide.seed_trait_required && herbicide.seed_trait_required !== 'conventional') {
             if (!(input.seedTrait === 'xtend' && herbicide.seed_trait_required === 'roundup_ready') &&
                 !(input.seedTrait === 'enlist' && herbicide.seed_trait_required === 'roundup_ready')) {
                 if (herbicide.seed_trait_required !== input.seedTrait) {
@@ -142,7 +143,7 @@ export const evaluateSoybeanWeeds = (input: SoybeanWeedInput): RecommendationRes
             }
         }
 
-        if (herbicide.RUP_flag && !input.isRUPApplicator) {
+        if (herbicide.rup_flag && !input.isRUPApplicator) {
             status = 'REJECTED';
             rejectReasons.push({ reason: `Requires RUP license`, gateName: 'RUP Applicator' });
         }
@@ -152,12 +153,45 @@ export const evaluateSoybeanWeeds = (input: SoybeanWeedInput): RecommendationRes
             rejectReasons.push({ reason: `PHI is ${herbicide.phi_days} days`, gateName: 'PHI Limit' });
         }
 
+        // Soil Texture Warning Rule
+        if (input.applicationType === 'PRE') {
+            if (herbicide.soil_texture_restriction) {
+                if (input.soilTexture === 'unknown') {
+                    warnings.push(`Soil Restrictions Apply: ${herbicide.soil_texture_restriction}`);
+                } else if (input.soilTexture === 'sand' && herbicide.soil_texture_restriction.toLowerCase().includes('coarse')) {
+                    warnings.push(`HIGH RISK on Sand: ${herbicide.soil_texture_restriction}`);
+                }
+            }
+        }
+
+        // Plantback Rotation Warning Rule
+        if (herbicide.plantback_restriction && herbicide.plantback_restriction.toLowerCase() !== 'none') {
+            warnings.push(`Plantback Restriction: ${herbicide.plantback_restriction}`);
+        }
+
+        // Efficacy
+        const efficacyRatings: Record<string, string> = {};
+        for (const weed of input.weedsPresent) {
+            if (herbicide.efficacy && herbicide.efficacy[weed]) {
+                efficacyRatings[weed] = herbicide.efficacy[weed];
+                if (herbicide.efficacy[weed] === 'P' || herbicide.efficacy[weed] === 'N') {
+                     status = 'REJECTED';
+                     rejectReasons.push({ reason: `Poor/No control for ${weed}`, gateName: 'Efficacy Gate' });
+                }
+            } else {
+                status = 'REJECTED';
+                rejectReasons.push({ reason: `No efficacy data for ${weed}`, gateName: 'Efficacy Gate' });
+            }
+        }
+
         return {
             uniqueId: herbicide.unique_id,
             tradeName: herbicide.trade_name,
             rate: herbicide.rate_per_acre,
             status,
-            rejectReasons
+            rejectReasons,
+            warnings,
+            efficacyRatings
         };
     });
 };
@@ -166,6 +200,7 @@ export const evaluateCottonInsects = (input: CottonInsectInput): RecommendationR
     return cottonInsectsData.map((product: any) => {
         let status: RecommendationResult['status'] = 'RECOMMEND';
         const rejectReasons: RejectionReason[] = [];
+        const warnings: string[] = [];
 
         if (product.pest_target !== input.pestTarget) {
             status = 'REJECTED';
@@ -197,7 +232,14 @@ export const evaluateCottonInsects = (input: CottonInsectInput): RecommendationR
             tradeName: product.trade_name,
             rate: product.rate_per_acre,
             status,
-            rejectReasons
+            rejectReasons,
+            warnings
         };
     });
 };
+
+// Wrapper functions for specific crops
+export const evaluateSoybeanWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(soybeanWeedsData, input);
+export const evaluateCornWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cornWeedsData, input);
+export const evaluatePeanutWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(peanutWeedsData, input);
+export const evaluateCottonWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cottonWeedsData, input);

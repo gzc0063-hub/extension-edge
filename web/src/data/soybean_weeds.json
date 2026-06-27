@@ -4,32 +4,29 @@
     "trade_name": "Engenia",
     "active_ingredient": "BAPMA dicamba",
     "herbicide_group": "4",
-    "seed_trait_required": "xtend",
     "application_type": "POST",
+    "seed_trait_required": "xtend",
+    "soil_texture_restriction": null,
+    "plantback_restriction": "None",
     "phi_days": 7,
     "rup_flag": true,
-    "rate_per_acre": "12.8 fl.oz."
+    "rate_per_acre": "12.8 fl.oz.",
+    "efficacy": { "palmer_amaranth": "E", "morningglory": "E", "crabgrass": "N" },
+    "comments": "RESTRICTED USE. Xtend soybeans ONLY."
   },
   {
     "unique_id": "IPM-SOY-WEED-02",
     "trade_name": "Enlist One",
     "active_ingredient": "2,4-D choline",
     "herbicide_group": "4",
-    "seed_trait_required": "enlist",
     "application_type": "POST",
+    "seed_trait_required": "enlist",
+    "soil_texture_restriction": null,
+    "plantback_restriction": "None",
     "phi_days": 30,
     "rup_flag": false,
-    "rate_per_acre": "1.5-2.0 pt"
-  },
-  {
-    "unique_id": "IPM-SOY-WEED-03",
-    "trade_name": "Roundup PowerMax",
-    "active_ingredient": "glyphosate",
-    "herbicide_group": "9",
-    "seed_trait_required": "roundup_ready",
-    "application_type": "POST",
-    "phi_days": 14,
-    "rup_flag": false,
-    "rate_per_acre": "22-44 fl.oz."
+    "rate_per_acre": "1.5-2.0 pt",
+    "efficacy": { "palmer_amaranth": "E", "morningglory": "G", "crabgrass": "N" },
+    "comments": "Enlist soybeans ONLY."
   }
 ]

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCottonInsects, type PastureInput, type SoybeanWeedInput, type CottonInsectInput, type RecommendationResult } from './engine';
+import { evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCottonInsects, type PastureInput, type RowCropWeedInput, type CottonInsectInput, type RecommendationResult } from './engine';
 
 describe('Modular Deterministic Engine', () => {
 
@@ -21,15 +21,18 @@ describe('Modular Deterministic Engine', () => {
     });
 
     it('Soybean: Seed trait incompatibility rejects product', () => {
-        const input: SoybeanWeedInput = {
+        const input: RowCropWeedInput = {
             applicationType: 'POST',
             seedTrait: 'enlist',
+            soilTexture: 'loam',
+            nextPlannedCrop: 'corn',
+            weedsPresent: ['palmer_amaranth'],
             daysToHarvest: 100,
             isRUPApplicator: true
         };
         const results = evaluateSoybeanWeeds(input);
 
-        // Engenia requires Xtend trait. User planted Enlist. Should be rejected to save crop from death.
+        // Engenia requires Xtend trait. User planted Enlist. Should be rejected.
         const engenia = results.find((r: RecommendationResult) => r.tradeName === 'Engenia');
         expect(engenia).toBeDefined();
         expect(engenia!.status).toBe('REJECTED');
@@ -50,7 +53,6 @@ describe('Modular Deterministic Engine', () => {
         };
         const results = evaluateCottonInsects(input);
 
-        // Vantacor should be rejected because we shouldn't spray if threshold isn't met
         const vantacor = results.find((r: RecommendationResult) => r.tradeName === 'VANTACOR');
         expect(vantacor).toBeDefined();
         expect(vantacor!.status).toBe('REJECTED');
