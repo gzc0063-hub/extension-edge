@@ -1,26 +1,38 @@
 import { useState } from 'react';
-import { runDeterministicEngine, type GrowerInput, type RecommendationResult, type ForageType, type ApplicationType } from './engine';
-import { AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
+import { evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCottonInsects, type GuideType, type RecommendationResult, type PastureInput, type SoybeanWeedInput, type CottonInsectInput } from './engine';
+import { CheckCircle, XCircle } from 'lucide-react';
 import efficacyData from './data/efficacy.json';
 
 const ALL_WEEDS = Array.from(new Set(efficacyData.map((e: any) => e.weed_id))).sort();
 
 function App() {
-  const [input, setInput] = useState<GrowerInput>({
-    forageType: 'bermuda_maint',
-    applicationType: 'POST',
-    weedsPresent: [],
-    hasLactatingDairy: false,
-    hasLegumesToSave: false,
-    isRUPApplicator: true,
-    willExportHayOrManure: false,
-    willSlaughterWithinWait: false
+  const [guideType, setGuideType] = useState<GuideType>('pasture_weeds');
+
+  // --- State for Pasture ---
+  const [pastureInput, setPastureInput] = useState<PastureInput>({
+    forageType: 'bermuda_maint', applicationType: 'POST', weedsPresent: [], hasLactatingDairy: false, hasLegumesToSave: false, isRUPApplicator: true, willExportHayOrManure: false
+  });
+
+  // --- State for Soybeans ---
+  const [soybeanInput, setSoybeanInput] = useState<SoybeanWeedInput>({
+    applicationType: 'POST', seedTrait: 'enlist', daysToHarvest: 100, isRUPApplicator: true
+  });
+
+  // --- State for Cotton Insects ---
+  const [cottonInput, setCottonInput] = useState<CottonInsectInput>({
+    pestTarget: 'bollworm', thresholdMet: false, beneficialsPresentToSave: false, daysToHarvest: 100, isRUPApplicator: true
   });
 
   const [results, setResults] = useState<RecommendationResult[]>([]);
 
+  const handleRun = () => {
+    if (guideType === 'pasture_weeds') setResults(evaluatePastureWeeds(pastureInput));
+    if (guideType === 'soybean_weeds') setResults(evaluateSoybeanWeeds(soybeanInput));
+    if (guideType === 'cotton_insects') setResults(evaluateCottonInsects(cottonInput));
+  };
+
   const toggleWeed = (weed: string) => {
-    setInput(prev => ({
+    setPastureInput(prev => ({
       ...prev,
       weedsPresent: prev.weedsPresent.includes(weed)
         ? prev.weedsPresent.filter(w => w !== weed)
@@ -28,13 +40,8 @@ function App() {
     }));
   };
 
-  const handleRun = () => {
-    const res = runDeterministicEngine(input);
-    setResults(res);
-  };
-
   const recommended = results.filter(r => r.status === 'RECOMMEND');
-  const manualReview = results.filter(r => r.status === 'MANUAL_REVIEW');
+  // const manualReview = results.filter(r => r.status === 'MANUAL_REVIEW');
   const rejected = results.filter(r => r.status === 'REJECTED');
 
   return (
@@ -47,145 +54,144 @@ function App() {
         </header>
 
         <section className="bg-white p-6 rounded-lg shadow-md space-y-6">
-          <h2 className="text-2xl font-semibold border-b pb-2">1. Field Situation</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium mb-1">Crop / Forage Type</label>
-              <select
-                className="w-full p-2 border rounded-md"
-                value={input.forageType}
-                onChange={(e) => setInput({...input, forageType: e.target.value as ForageType})}
-              >
-                <option value="corn">Corn (Field)</option>
-                <option value="cotton">Cotton</option>
-                <option value="soybeans">Soybeans</option>
-                <option value="peanuts">Peanuts</option>
-                <option value="grain_sorghum">Grain Sorghum</option>
-                <option disabled>────── Pasture <option value="bermuda_est">Bermudagrass (Establishing)</option> Forage ──────</option>
-                <option value="bermuda_est">Bermudagrass (Establishing)</option>
-                <option value="bermuda_maint">Bermudagrass (Maintenance)</option>
-                <option value="bahiagrass">Bahiagrass</option>
-                <option value="fescue">Fescue</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Application Timing</label>
-              <select
-                className="w-full p-2 border rounded-md"
-                value={input.applicationType}
-                onChange={(e) => setInput({...input, applicationType: e.target.value as ApplicationType})}
-              >
-                <option value="PRE">Pre-emergence (PRE)</option>
-                <option value="POST">Post-emergence (POST)</option>
-              </select>
-            </div>
-          </div>
+          <h2 className="text-2xl font-semibold border-b pb-2">1. Select Guide & Situation</h2>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Target Pests / Weeds (Select multiple)</label>
-            <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-2 border rounded-md bg-gray-50">
-              {ALL_WEEDS.slice(0, 20).map(weed => (
-                <button
-                  key={weed}
-                  onClick={() => toggleWeed(weed)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                    input.weedsPresent.includes(weed)
-                      ? 'bg-green-600 text-white'
-                      : 'bg-white border text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  {weed}
-                </button>
-              ))}
-              <span className="text-xs text-gray-400 p-1">(Showing top 20 for demo)</span>
+            <label className="block text-sm font-medium mb-1">Select IPM Guide</label>
+            <select
+              className="w-full p-2 border rounded-md font-bold bg-gray-50"
+              value={guideType}
+              onChange={(e) => {
+                  setGuideType(e.target.value as GuideType);
+                  setResults([]);
+              }}
+            >
+              <option value="pasture_weeds">Pasture & Forage Weed Control 2026</option>
+              <option value="soybean_weeds">Soybean Weed Control 2025</option>
+              <option value="cotton_insects">Cotton Insect Control 2026</option>
+            </select>
+          </div>
+
+          {/* DYNAMIC FORM RENDERER */}
+
+          {guideType === 'pasture_weeds' && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm mb-1">Forage Type</label>
+                    <select className="w-full p-2 border rounded-md" value={pastureInput.forageType} onChange={e => setPastureInput({...pastureInput, forageType: e.target.value})}>
+                      <option value="bermuda_maint">Bermudagrass (Maintenance)</option>
+                      <option value="bahiagrass">Bahiagrass</option>
+                      <option value="fescue">Fescue</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm mb-1">Timing</label>
+                    <select className="w-full p-2 border rounded-md" value={pastureInput.applicationType} onChange={e => setPastureInput({...pastureInput, applicationType: e.target.value})}>
+                      <option value="PRE">PRE</option>
+                      <option value="POST">POST</option>
+                    </select>
+                  </div>
+              </div>
+              <div>
+                <label className="block text-sm mb-1">Target Weeds</label>
+                <div className="flex flex-wrap gap-2">
+                  {ALL_WEEDS.slice(0, 10).map(weed => (
+                    <button key={weed} onClick={() => toggleWeed(weed)} className={`px-3 py-1 rounded-full text-sm border ${pastureInput.weedsPresent.includes(weed) ? 'bg-green-600 text-white' : 'bg-white'}`}>
+                      {weed}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 mt-4">
+                 <label className="flex items-center space-x-2"><input type="checkbox" checked={pastureInput.isRUPApplicator} onChange={e => setPastureInput({...pastureInput, isRUPApplicator: e.target.checked})}/><span>Has RUP License</span></label>
+                 <label className="flex items-center space-x-2"><input type="checkbox" checked={pastureInput.hasLactatingDairy} onChange={e => setPastureInput({...pastureInput, hasLactatingDairy: e.target.checked})}/><span className="text-red-600">Dairy on field</span></label>
+                 <label className="flex items-center space-x-2"><input type="checkbox" checked={pastureInput.hasLegumesToSave} onChange={e => setPastureInput({...pastureInput, hasLegumesToSave: e.target.checked})}/><span className="text-red-600">Legumes to save</span></label>
+              </div>
             </div>
-          </div>
+          )}
+
+          {guideType === 'soybean_weeds' && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-bold text-red-600 mb-1">Planted Seed Trait Technology</label>
+                    <select className="w-full p-2 border border-red-300 rounded-md bg-red-50" value={soybeanInput.seedTrait} onChange={e => setSoybeanInput({...soybeanInput, seedTrait: e.target.value as any})}>
+                      <option value="conventional">Conventional (No Traits)</option>
+                      <option value="roundup_ready">Roundup Ready</option>
+                      <option value="xtend">Xtend (Dicamba tolerant)</option>
+                      <option value="enlist">Enlist E3 (2,4-D tolerant)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm mb-1">Timing</label>
+                    <select className="w-full p-2 border rounded-md" value={soybeanInput.applicationType} onChange={e => setSoybeanInput({...soybeanInput, applicationType: e.target.value})}>
+                      <option value="PRE">PRE</option>
+                      <option value="POST">POST</option>
+                    </select>
+                  </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mt-4 border-t pt-4">
+                 <label className="block text-sm mb-1">Days Until Harvest (PHI) <input type="number" className="w-20 ml-2 border rounded p-1" value={soybeanInput.daysToHarvest} onChange={e => setSoybeanInput({...soybeanInput, daysToHarvest: Number(e.target.value)})}/></label>
+                 <label className="flex items-center space-x-2"><input type="checkbox" checked={soybeanInput.isRUPApplicator} onChange={e => setSoybeanInput({...soybeanInput, isRUPApplicator: e.target.checked})}/><span>Has RUP License</span></label>
+              </div>
+            </div>
+          )}
+
+          {guideType === 'cotton_insects' && (
+             <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm mb-1">Pest Target</label>
+                      <select className="w-full p-2 border rounded-md" value={cottonInput.pestTarget} onChange={e => setCottonInput({...cottonInput, pestTarget: e.target.value})}>
+                        <option value="bollworm">Bollworm / Tobacco Budworm</option>
+                        <option value="aphids">Cotton Aphids</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-red-600 mb-1">Scouting Threshold</label>
+                      <label className="flex items-center space-x-2 p-2 border border-red-300 rounded-md bg-red-50">
+                          <input type="checkbox" checked={cottonInput.thresholdMet} onChange={e => setCottonInput({...cottonInput, thresholdMet: e.target.checked})}/>
+                          <span>Economic Threshold Met (e.g. 10 larvae/100 plants)</span>
+                      </label>
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4 mt-4 border-t pt-4">
+                   <label className="flex items-center space-x-2"><input type="checkbox" checked={cottonInput.beneficialsPresentToSave} onChange={e => setCottonInput({...cottonInput, beneficialsPresentToSave: e.target.checked})}/><span className="text-green-700">Beneficials present to save</span></label>
+                   <label className="block text-sm mb-1">Days Until Harvest <input type="number" className="w-20 ml-2 border rounded p-1" value={cottonInput.daysToHarvest} onChange={e => setCottonInput({...cottonInput, daysToHarvest: Number(e.target.value)})}/></label>
+                </div>
+             </div>
+          )}
+
         </section>
 
-        <section className="bg-white p-6 rounded-lg shadow-md space-y-4">
-          <h2 className="text-2xl font-semibold border-b pb-2">2. Hard Constraints (Zero Tolerance)</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <label className="flex items-center space-x-3 p-3 border rounded-md hover:bg-gray-50 cursor-pointer">
-              <input type="checkbox" className="h-5 w-5" checked={input.isRUPApplicator} onChange={(e) => setInput({...input, isRUPApplicator: e.target.checked})} />
-              <span className="font-medium">I have a Restricted Use Pesticide license</span>
-            </label>
-            <label className="flex items-center space-x-3 p-3 border rounded-md hover:bg-gray-50 cursor-pointer">
-              <input type="checkbox" className="h-5 w-5 text-red-600" checked={input.hasLactatingDairy} onChange={(e) => setInput({...input, hasLactatingDairy: e.target.checked})} />
-              <span className="font-medium">Lactating dairy animals on field</span>
-            </label>
-            <label className="flex items-center space-x-3 p-3 border rounded-md hover:bg-gray-50 cursor-pointer">
-              <input type="checkbox" className="h-5 w-5 text-red-600" checked={input.hasLegumesToSave} onChange={(e) => setInput({...input, hasLegumesToSave: e.target.checked})} />
-              <span className="font-medium">Clover/Legumes present to save</span>
-            </label>
-            <label className="flex items-center space-x-3 p-3 border rounded-md hover:bg-gray-50 cursor-pointer">
-              <input type="checkbox" className="h-5 w-5 text-red-600" checked={input.willExportHayOrManure} onChange={(e) => setInput({...input, willExportHayOrManure: e.target.checked})} />
-              <span className="font-medium">Plan to export Hay or Manure off-farm</span>
-            </label>
-          </div>
-        </section>
-
-        <button
-          onClick={handleRun}
-          disabled={input.weedsPresent.length === 0}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg shadow-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed text-lg"
-        >
-          {input.weedsPresent.length === 0 ? "Select at least one weed" : "Run Deterministic Screen"}
+        <button onClick={handleRun} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg shadow-lg text-lg">
+          Run Deterministic Screen
         </button>
 
         {results.length > 0 && (
           <section className="space-y-6">
-
-            {/* Recommended */}
             <div className="bg-green-50 border-2 border-green-500 rounded-lg p-6">
               <h3 className="text-xl font-bold text-green-800 flex items-center gap-2 mb-4">
-                <CheckCircle className="h-6 w-6" />
-                Recommended Products ({recommended.length})
+                <CheckCircle className="h-6 w-6" /> Recommended Products ({recommended.length})
               </h3>
               {recommended.length === 0 ? (
-                <p className="text-green-700">No products passed all hard gates and efficacy requirements.</p>
+                <p className="text-green-700">No products passed all hard gates.</p>
               ) : (
                 <ul className="space-y-3">
                   {recommended.map(r => (
-                    <li key={r.uniqueId} className="bg-white p-4 rounded shadow-sm border border-green-200">
-                      <div className="flex justify-between items-center">
-                        <span className="font-bold text-lg">{r.tradeName}</span>
-                        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-mono text-sm">{r.rate}</span>
-                      </div>
+                    <li key={r.uniqueId} className="bg-white p-4 rounded shadow-sm border border-green-200 flex justify-between">
+                      <span className="font-bold text-lg">{r.tradeName}</span>
+                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-mono text-sm">{r.rate}</span>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
 
-            {/* Manual Review */}
-            {manualReview.length > 0 && (
-              <div className="bg-yellow-50 border-2 border-yellow-500 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-yellow-800 flex items-center gap-2 mb-4">
-                  <AlertTriangle className="h-6 w-6" />
-                  Requires Manual Review ({manualReview.length})
-                </h3>
-                <p className="text-yellow-700 mb-4 text-sm">The guide data is UNKNOWN for one of your constraints.</p>
-                <ul className="space-y-3">
-                  {manualReview.map(r => (
-                    <li key={r.uniqueId} className="bg-white p-3 rounded shadow-sm border border-yellow-200">
-                      <span className="font-bold">{r.tradeName}</span>
-                      <ul className="text-sm text-yellow-700 mt-1 ml-4 list-disc">
-                        {r.rejectReasons.map((reason, i) => <li key={i}>{reason.reason}</li>)}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Rejected */}
             <div className="bg-red-50 border border-red-200 rounded-lg p-6">
               <h3 className="text-lg font-bold text-red-800 flex items-center gap-2 mb-4">
-                <XCircle className="h-5 w-5" />
-                Rejected Products ({rejected.length})
+                <XCircle className="h-5 w-5" /> Rejected Products ({rejected.length})
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {rejected.slice(0, 10).map(r => (
@@ -194,17 +200,14 @@ function App() {
                     <div className="mt-1 flex flex-wrap gap-1">
                       {r.rejectReasons.slice(0, 2).map((reason, i) => (
                         <span key={i} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">
-                          {reason.gateName}
+                          {reason.gateName}: {reason.reason}
                         </span>
                       ))}
-                      {r.rejectReasons.length > 2 && <span className="text-xs text-gray-500">+{r.rejectReasons.length - 2} more</span>}
                     </div>
                   </div>
                 ))}
               </div>
-              {rejected.length > 10 && <p className="text-sm text-gray-500 mt-3 text-center">...and {rejected.length - 10} more</p>}
             </div>
-
           </section>
         )}
       </div>
