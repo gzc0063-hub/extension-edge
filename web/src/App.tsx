@@ -220,9 +220,14 @@ function App() {
         {results.length > 0 && (
           <section className="space-y-6">
             <div className="bg-green-50 border-2 border-green-500 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-green-800 flex items-center gap-2 mb-4">
-                <CheckCircle className="h-6 w-6" /> Recommended Products ({recommended.length})
-              </h3>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+                  <h3 className="text-xl font-bold text-green-800 flex items-center gap-2">
+                    <CheckCircle className="h-6 w-6" /> Recommended Products ({recommended.length})
+                  </h3>
+                  <div className="text-xs font-bold text-red-700 bg-red-100 px-2 py-1 rounded border border-red-200 uppercase tracking-wide">
+                     Disclaimer: Always check labels before use
+                  </div>
+              </div>
               {recommended.length === 0 ? (
                 <p className="text-green-700">No products passed all hard gates.</p>
               ) : (
@@ -230,12 +235,37 @@ function App() {
                   {recommended.map(r => (
                     <li key={r.uniqueId} className="bg-white p-4 rounded shadow-sm border border-green-200">
                       <div className="flex justify-between items-start">
-                          <span className="font-bold text-lg">{r.tradeName}</span>
-                          <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-mono text-sm">{r.rate}</span>
+                          <div>
+                            <span className="font-bold text-lg">{r.tradeName}</span>
+                            <div className="text-sm text-gray-600 mt-1">
+                                <span className="font-semibold">Active Ingredient:</span> {r.activeIngredient}
+                                {r.phiDays !== undefined && !isNaN(r.phiDays) && (
+                                    <span className="ml-4"><span className="font-semibold">PHI:</span> {r.phiDays} days</span>
+                                )}
+                            </div>
+                            {r.comments && (
+                                <div className="text-sm text-gray-700 mt-2 bg-gray-50 p-2 rounded border border-gray-100 italic">
+                                    "{r.comments}"
+                                </div>
+                            )}
+                            {r.efficacyRatings && Object.keys(r.efficacyRatings).length > 0 && (
+                                <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                                    <span className="font-bold text-gray-600 self-center">Control:</span>
+                                    {Object.entries(r.efficacyRatings).map(([weed, rating]) => {
+                                        const ratingColors: Record<string, string> = { 'E': 'bg-green-200 text-green-900', 'G': 'bg-green-100 text-green-800', 'F': 'bg-yellow-100 text-yellow-800', 'P': 'bg-red-100 text-red-800', 'N': 'bg-gray-200 text-gray-800' };
+                                        const css = ratingColors[rating] || 'bg-gray-100';
+                                        return <span key={weed} className={`px-2 py-0.5 rounded-full ${css}`}>{weed.replace('_', ' ')}: {rating}</span>
+                                    })}
+                                </div>
+                            )}
+                          </div>
+                          <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-mono text-sm border border-green-200 whitespace-nowrap ml-4 shrink-0">
+                             Rate: {r.rate} / acre
+                          </span>
                       </div>
                       {r.warnings && r.warnings.length > 0 && (
-                          <div className="mt-2 text-sm text-amber-700 bg-amber-50 p-2 rounded flex gap-2">
-                              <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5"/>
+                          <div className="mt-3 text-sm text-amber-700 bg-amber-50 p-2 rounded flex gap-2 border border-amber-100">
+                              <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5 text-amber-500"/>
                               <ul className="list-disc pl-4">
                                 {r.warnings.map((w, i) => <li key={i}>{w}</li>)}
                               </ul>

@@ -44,11 +44,14 @@ export interface RejectionReason {
 export interface RecommendationResult {
     uniqueId: string;
     tradeName: string;
+    activeIngredient: string;
+    phiDays?: number;
     rate: string;
     status: 'RECOMMEND' | 'REJECTED' | 'MANUAL_REVIEW';
     rejectReasons: RejectionReason[];
     warnings: string[];
     efficacyRatings?: Record<string, string>;
+    comments?: string;
 }
 
 export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[] => {
@@ -120,11 +123,14 @@ export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[
         return {
             uniqueId: herbicide.unique_id,
             tradeName: herbicide.trade_name,
+            activeIngredient: herbicide.active_ingredient,
+            phiDays: herbicide.hay_phi_days ? parseInt(herbicide.hay_phi_days) : undefined,
             rate: herbicide.rate_per_acre,
             status,
             rejectReasons,
             warnings,
-            efficacyRatings
+            efficacyRatings,
+            comments: herbicide.comments_structured || herbicide.comments
         };
     });
 };
@@ -202,11 +208,14 @@ export const evaluateRowCropWeeds = (cropData: any[], input: RowCropWeedInput): 
         return {
             uniqueId: herbicide.unique_id,
             tradeName: herbicide.trade_name,
+            activeIngredient: herbicide.active_ingredient,
+            phiDays: herbicide.phi_days,
             rate: herbicide.rate_per_acre,
             status,
             rejectReasons,
             warnings,
-            efficacyRatings
+            efficacyRatings,
+            comments: herbicide.comments_structured || herbicide.comments
         };
     });
 };
@@ -245,10 +254,13 @@ export const evaluateCottonInsects = (input: CottonInsectInput): RecommendationR
         return {
             uniqueId: product.unique_id,
             tradeName: product.trade_name,
+            activeIngredient: product.active_ingredient,
+            phiDays: product.phi_days,
             rate: product.rate_per_acre,
             status,
             rejectReasons,
-            warnings
+            warnings,
+            comments: product.comments_structured || product.comments
         };
     });
 };
