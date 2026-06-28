@@ -392,7 +392,7 @@ function App() {
                             )}
                           </div>
                           <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-mono text-sm border border-green-200 whitespace-nowrap ml-4 shrink-0">
-                             Rate: {r.rate} / acre
+                             Rate: {r.rate}{r.rate.toLowerCase().includes('see source') ? '' : ' / acre'}
                           </span>
                       </div>
                       {r.warnings && r.warnings.length > 0 && (

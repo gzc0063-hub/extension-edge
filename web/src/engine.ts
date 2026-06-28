@@ -39,7 +39,7 @@ export interface RowCropHerbicideRecord {
     application_type: string;
     seed_trait_required?: string;
     rup_flag: boolean;
-    phi_days: number;
+    phi_days?: number | null;
     rate_per_acre: string;
     soil_texture_restriction?: string | null;
     plantback_restriction?: string | null;
@@ -232,7 +232,7 @@ export const evaluateRowCropWeeds = (cropData: RowCropHerbicideRecord[], input: 
             rejectReasons.push({ reason: `Requires RUP license`, gateName: 'RUP Applicator' });
         }
 
-        if (input.daysToHarvest < herbicide.phi_days) {
+        if (typeof herbicide.phi_days === 'number' && input.daysToHarvest < herbicide.phi_days) {
             status = 'REJECTED';
             rejectReasons.push({ reason: `PHI is ${herbicide.phi_days} days`, gateName: 'PHI Limit' });
         }
@@ -280,7 +280,7 @@ export const evaluateRowCropWeeds = (cropData: RowCropHerbicideRecord[], input: 
             uniqueId: herbicide.unique_id,
             tradeName: herbicide.trade_name,
             activeIngredient: herbicide.active_ingredient || 'Not listed',
-            phiDays: herbicide.phi_days,
+            phiDays: herbicide.phi_days ?? undefined,
             rate: herbicide.rate_per_acre,
             status,
             rejectReasons,

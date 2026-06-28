@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
     evaluatePastureWeeds,
     evaluateSoybeanWeeds,
+    evaluateCornWeeds,
     evaluateCottonInsects,
     getCottonInsectPestOptions,
     getRowCropWeedOptions,
@@ -76,5 +77,21 @@ describe('Modular Deterministic Engine', () => {
 
     it('exposes cotton insect pest options from the insect dataset', () => {
         expect(getCottonInsectPestOptions()).toEqual(['bollworm']);
+    });
+
+    it('Corn: POST morningglory has source-derived options from the guide matrix', () => {
+        const input: RowCropWeedInput = {
+            applicationType: 'POST',
+            seedTrait: 'conventional',
+            soilTexture: 'loam',
+            nextPlannedCrop: 'Unknown',
+            weedsPresent: ['morningglory'],
+            daysToHarvest: 100,
+            isRUPApplicator: true
+        };
+
+        expect(getRowCropWeedOptions('corn_weeds')).toContain('morningglory');
+        expect(getRowCropWeedOptions('corn_weeds').length).toBeGreaterThan(25);
+        expect(evaluateCornWeeds(input).filter((result) => result.status === 'RECOMMEND').length).toBeGreaterThan(0);
     });
 });
