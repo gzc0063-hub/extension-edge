@@ -48,6 +48,7 @@ function App() {
   };
 
   const recommended = results.filter(r => r.status === 'RECOMMEND');
+  const manualReview = results.filter(r => r.status === 'MANUAL_REVIEW');
   const rejected = results.filter(r => r.status === 'REJECTED');
 
   const isRowCropWeeds = ['soybean_weeds', 'corn_weeds', 'cotton_weeds', 'peanut_weeds'].includes(guideType);
@@ -278,6 +279,28 @@ function App() {
             </div>
 
             <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              {manualReview.length > 0 && (
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                    <h3 className="text-lg font-bold text-yellow-800 flex items-center gap-2 mb-4">
+                      <AlertTriangle className="h-5 w-5" /> Requires Manual Review ({manualReview.length})
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {manualReview.map(r => (
+                        <div key={r.uniqueId} className="bg-white p-3 rounded shadow-sm border border-yellow-100 text-sm">
+                          <span className="font-bold text-gray-800">{r.tradeName}</span>
+                          <div className="mt-1 flex flex-wrap gap-1">
+                            {r.rejectReasons.map((reason, i) => (
+                              <span key={i} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                                {reason.gateName}: {reason.reason}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+              )}
+
               <h3 className="text-lg font-bold text-red-800 flex items-center gap-2 mb-4">
                 <XCircle className="h-5 w-5" /> Rejected Products ({rejected.length})
               </h3>
