@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import {
     evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCornWeeds, evaluatePeanutWeeds, evaluateCottonWeeds, evaluateCottonInsects,
-    type GuideType, type RecommendationResult, type PastureInput, type RowCropWeedInput, type CottonInsectInput
+    type GuideType, type RecommendationResult, type PastureInput, type RowCropWeedInput, type CottonInsectInput, type EfficacyRecord
 } from './engine';
 import { CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
 import efficacyData from './data/efficacy.json';
+import { addWeedSelection, filterWeedOptions, MAX_WEED_SELECTIONS, removeWeedSelection } from './weedSelection';
 
-const ALL_PASTURE_WEEDS = Array.from(new Set(efficacyData.map((e: any) => e.weed_id))).sort();
+const ALL_PASTURE_WEEDS = Array.from(new Set((efficacyData as EfficacyRecord[]).map((e) => e.weed_id))).sort();
 const COMMON_ROW_WEEDS = ["palmer_amaranth", "morningglory", "crabgrass", "sicklepod", "florida_beggarweed"];
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
   });
 
   const [results, setResults] = useState<RecommendationResult[]>([]);
+  const [pastureWeedQuery, setPastureWeedQuery] = useState('');
+  const [rowWeedQuery, setRowWeedQuery] = useState('');
 
   const handleRun = () => {
     if (guideType === 'pasture_weeds') setResults(evaluatePastureWeeds(pastureInput));
@@ -35,15 +38,33 @@ function App() {
     if (guideType === 'cotton_insects') setResults(evaluateCottonInsects(cottonInsectInput));
   };
 
-  const togglePastureWeed = (weed: string) => {
+  const addPastureWeed = (weed: string) => {
     setPastureInput(prev => ({
-      ...prev, weedsPresent: prev.weedsPresent.includes(weed) ? prev.weedsPresent.filter(w => w !== weed) : [...prev.weedsPresent, weed]
+      ...prev,
+      weedsPresent: addWeedSelection(prev.weedsPresent, weed)
+    }));
+    setPastureWeedQuery('');
+  };
+
+  const removePastureWeed = (weed: string) => {
+    setPastureInput(prev => ({
+      ...prev,
+      weedsPresent: removeWeedSelection(prev.weedsPresent, weed)
     }));
   };
 
-  const toggleRowCropWeed = (weed: string) => {
+  const addRowCropWeed = (weed: string) => {
     setRowCropInput(prev => ({
-      ...prev, weedsPresent: prev.weedsPresent.includes(weed) ? prev.weedsPresent.filter(w => w !== weed) : [...prev.weedsPresent, weed]
+      ...prev,
+      weedsPresent: addWeedSelection(prev.weedsPresent, weed)
+    }));
+    setRowWeedQuery('');
+  };
+
+  const removeRowCropWeed = (weed: string) => {
+    setRowCropInput(prev => ({
+      ...prev,
+      weedsPresent: removeWeedSelection(prev.weedsPresent, weed)
     }));
   };
 
@@ -51,6 +72,10 @@ function App() {
   const rejected = results.filter(r => r.status === 'REJECTED');
 
   const isRowCropWeeds = ['soybean_weeds', 'corn_weeds', 'cotton_weeds', 'peanut_weeds'].includes(guideType);
+  const pastureWeedSuggestions = filterWeedOptions(ALL_PASTURE_WEEDS, pastureWeedQuery, pastureInput.weedsPresent);
+  const rowWeedSuggestions = filterWeedOptions(COMMON_ROW_WEEDS, rowWeedQuery, rowCropInput.weedsPresent);
+  const canAddPastureWeed = pastureInput.weedsPresent.length < MAX_WEED_SELECTIONS;
+  const canAddRowWeed = rowCropInput.weedsPresent.length < MAX_WEED_SELECTIONS;
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 font-sans text-gray-900">
@@ -111,13 +136,55 @@ function App() {
                   </div>
               </div>
               <div>
-                <label className="block text-sm mb-1">Target Weeds</label>
-                <div className="flex flex-wrap gap-2">
-                  {ALL_PASTURE_WEEDS.slice(0, 10).map(weed => (
-                    <button key={weed} onClick={() => togglePastureWeed(weed)} className={`px-3 py-1 rounded-full text-sm border ${pastureInput.weedsPresent.includes(weed) ? 'bg-green-600 text-white' : 'bg-white'}`}>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <label className="block text-sm font-medium">Target Weeds</label>
+                  <span className="text-sm text-gray-500">{pastureInput.weedsPresent.length}/{MAX_WEED_SELECTIONS} selected</span>
+                </div>
+                <div className="space-y-3 rounded-md border bg-gray-50 p-3">
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <input
+                      className="min-w-0 flex-1 rounded-md border bg-white p-2"
+                      value={pastureWeedQuery}
+                      onChange={(e) => setPastureWeedQuery(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          addPastureWeed(pastureWeedQuery);
+                        }
+                      }}
+                      placeholder="Type a weed name, pest, or code"
+                      disabled={!canAddPastureWeed}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => addPastureWeed(pastureWeedQuery)}
+                      disabled={!canAddPastureWeed || pastureWeedQuery.trim().length === 0}
+                      className="rounded-md bg-green-700 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-600"
+                    >
+                      Add weed
+                    </button>
+                  </div>
+
+                  {pastureInput.weedsPresent.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {pastureInput.weedsPresent.map(weed => (
+                        <button key={weed} type="button" onClick={() => removePastureWeed(weed)} className="rounded-full bg-green-700 px-3 py-1 text-sm font-medium text-white transition-colors hover:bg-green-800">
+                          {weed} x
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="flex max-h-40 flex-wrap gap-2 overflow-y-auto">
+                  {pastureWeedSuggestions.map(weed => (
+                    <button key={weed} type="button" onClick={() => addPastureWeed(weed)} disabled={!canAddPastureWeed} className="px-3 py-1 rounded-full text-sm border bg-white text-gray-700 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400">
                       {weed}
                     </button>
                   ))}
+                  {pastureWeedSuggestions.length === 0 && (
+                    <span className="text-sm text-gray-500">No matching saved weed names. You can add the typed value.</span>
+                  )}
+                  </div>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-4">
@@ -155,7 +222,7 @@ function App() {
               <div className="grid grid-cols-2 gap-4 mt-2">
                  <div>
                     <label className="block text-sm mb-1">Soil Texture</label>
-                    <select className="w-full p-2 border rounded-md" value={rowCropInput.soilTexture} onChange={e => setRowCropInput({...rowCropInput, soilTexture: e.target.value as any})}>
+                    <select className="w-full p-2 border rounded-md" value={rowCropInput.soilTexture} onChange={e => setRowCropInput({...rowCropInput, soilTexture: e.target.value as RowCropWeedInput['soilTexture']})}>
                       <option value="unknown">Unknown</option>
                       <option value="sand">Coarse (Sand/Loamy Sand)</option>
                       <option value="loam">Medium (Loam/Silt)</option>
@@ -169,13 +236,55 @@ function App() {
               </div>
 
               <div>
-                <label className="block text-sm mb-1">Target Weeds (Gold Standard Extract)</label>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <label className="block text-sm font-medium">Target Weeds</label>
+                  <span className="text-sm text-gray-500">{rowCropInput.weedsPresent.length}/{MAX_WEED_SELECTIONS} selected</span>
+                </div>
+                <div className="space-y-3 rounded-md border bg-gray-50 p-3">
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <input
+                      className="min-w-0 flex-1 rounded-md border bg-white p-2"
+                      value={rowWeedQuery}
+                      onChange={(e) => setRowWeedQuery(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          addRowCropWeed(rowWeedQuery);
+                        }
+                      }}
+                      placeholder="Type a weed name, pest, or code"
+                      disabled={!canAddRowWeed}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => addRowCropWeed(rowWeedQuery)}
+                      disabled={!canAddRowWeed || rowWeedQuery.trim().length === 0}
+                      className="rounded-md bg-green-700 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-600"
+                    >
+                      Add weed
+                    </button>
+                  </div>
+
+                  {rowCropInput.weedsPresent.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {rowCropInput.weedsPresent.map(weed => (
+                        <button key={weed} type="button" onClick={() => removeRowCropWeed(weed)} className="rounded-full bg-green-700 px-3 py-1 text-sm font-medium text-white transition-colors hover:bg-green-800">
+                          {weed.replace('_', ' ')} x
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                 <div className="flex flex-wrap gap-2">
-                  {COMMON_ROW_WEEDS.map(weed => (
-                    <button key={weed} onClick={() => toggleRowCropWeed(weed)} className={`px-3 py-1 rounded-full text-sm border ${rowCropInput.weedsPresent.includes(weed) ? 'bg-green-600 text-white' : 'bg-white'}`}>
+                  {rowWeedSuggestions.map(weed => (
+                    <button key={weed} type="button" onClick={() => addRowCropWeed(weed)} disabled={!canAddRowWeed} className="px-3 py-1 rounded-full text-sm border bg-white text-gray-700 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400">
                       {weed.replace('_', ' ')}
                     </button>
                   ))}
+                  {rowWeedSuggestions.length === 0 && (
+                    <span className="text-sm text-gray-500">No matching saved weed names. You can add the typed value.</span>
+                  )}
+                </div>
                 </div>
               </div>
 
@@ -213,8 +322,12 @@ function App() {
 
         </section>
 
-        <button onClick={handleRun} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg shadow-lg text-lg">
-          Run Deterministic Screen
+        <button
+          onClick={handleRun}
+          disabled={(guideType === 'pasture_weeds' && pastureInput.weedsPresent.length === 0) || (isRowCropWeeds && rowCropInput.weedsPresent.length === 0)}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg shadow-lg text-lg disabled:cursor-not-allowed disabled:bg-gray-400"
+        >
+          {((guideType === 'pasture_weeds' && pastureInput.weedsPresent.length === 0) || (isRowCropWeeds && rowCropInput.weedsPresent.length === 0)) ? 'Add 1 to 5 target weeds' : 'Run Deterministic Screen'}
         </button>
 
         {results.length > 0 && (

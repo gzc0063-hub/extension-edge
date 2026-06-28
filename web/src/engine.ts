@@ -8,6 +8,59 @@ import cottonWeedsData from './data/cotton_weeds.json';
 
 export type GuideType = "pasture_weeds" | "soybean_weeds" | "cotton_weeds" | "corn_weeds" | "peanut_weeds" | "cotton_insects";
 
+export interface HerbicideRecord {
+    unique_id: string;
+    trade_name: string;
+    active_ingredient?: string;
+    forage_type: string;
+    application_type: string;
+    rate_per_acre: string;
+    RUP_flag: boolean;
+    hay_phi_days?: string | number | null;
+    lactating_dairy_days?: string;
+    legume_sensitivity?: string;
+    off_farm_hay_restricted: boolean;
+    off_farm_manure_restricted: boolean;
+    comments_structured?: string | null;
+    comments?: string | null;
+}
+
+export interface EfficacyRecord {
+    unique_id: string;
+    weed_id: string;
+    rating: string;
+}
+
+export interface RowCropHerbicideRecord {
+    unique_id: string;
+    trade_name: string;
+    active_ingredient?: string;
+    application_type: string;
+    seed_trait_required?: string;
+    rup_flag: boolean;
+    phi_days: number;
+    rate_per_acre: string;
+    soil_texture_restriction?: string | null;
+    plantback_restriction?: string | null;
+    comments_structured?: string | null;
+    comments?: string | null;
+    efficacy?: Record<string, string>;
+}
+
+export interface CottonInsectRecord {
+    unique_id: string;
+    trade_name: string;
+    active_ingredient?: string;
+    pest_target: string;
+    economic_threshold_required: boolean;
+    beneficials_safe: boolean;
+    phi_days: number;
+    rup_flag: boolean;
+    rate_per_acre: string;
+    comments_structured?: string | null;
+    comments?: string | null;
+}
+
 export interface PastureInput {
     forageType: string;
     applicationType: string;
@@ -55,7 +108,7 @@ export interface RecommendationResult {
 }
 
 export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[] => {
-    return herbicidesData.map((herbicide: any) => {
+    return (herbicidesData as HerbicideRecord[]).map((herbicide) => {
         let status: RecommendationResult['status'] = 'RECOMMEND';
         const rejectReasons: RejectionReason[] = [];
         const warnings: string[] = [];
@@ -102,7 +155,7 @@ export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[
         let hasControl = false;
 
         for (const weed of input.weedsPresent) {
-            const efficacyRecord = efficacyData.find((e: any) => e.unique_id === herbicide.unique_id && e.weed_id === weed);
+            const efficacyRecord = (efficacyData as EfficacyRecord[]).find((e) => e.unique_id === herbicide.unique_id && e.weed_id === weed);
             if (efficacyRecord) {
                 efficacyRatings[weed] = efficacyRecord.rating;
                 if (efficacyRecord.rating === 'P' || efficacyRecord.rating === 'N') {
@@ -123,20 +176,20 @@ export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[
         return {
             uniqueId: herbicide.unique_id,
             tradeName: herbicide.trade_name,
-            activeIngredient: herbicide.active_ingredient,
-            phiDays: herbicide.hay_phi_days ? parseInt(herbicide.hay_phi_days) : undefined,
+            activeIngredient: herbicide.active_ingredient || 'Not listed',
+            phiDays: herbicide.hay_phi_days ? parseInt(String(herbicide.hay_phi_days)) : undefined,
             rate: herbicide.rate_per_acre,
             status,
             rejectReasons,
             warnings,
             efficacyRatings,
-            comments: herbicide.comments_structured || herbicide.comments
+            comments: herbicide.comments_structured || herbicide.comments || undefined
         };
     });
 };
 
-export const evaluateRowCropWeeds = (cropData: any[], input: RowCropWeedInput): RecommendationResult[] => {
-    return cropData.map((herbicide: any) => {
+export const evaluateRowCropWeeds = (cropData: RowCropHerbicideRecord[], input: RowCropWeedInput): RecommendationResult[] => {
+    return cropData.map((herbicide) => {
         let status: RecommendationResult['status'] = 'RECOMMEND';
         const rejectReasons: RejectionReason[] = [];
         const warnings: string[] = [];
@@ -208,20 +261,20 @@ export const evaluateRowCropWeeds = (cropData: any[], input: RowCropWeedInput): 
         return {
             uniqueId: herbicide.unique_id,
             tradeName: herbicide.trade_name,
-            activeIngredient: herbicide.active_ingredient,
+            activeIngredient: herbicide.active_ingredient || 'Not listed',
             phiDays: herbicide.phi_days,
             rate: herbicide.rate_per_acre,
             status,
             rejectReasons,
             warnings,
             efficacyRatings,
-            comments: herbicide.comments_structured || herbicide.comments
+            comments: herbicide.comments_structured || herbicide.comments || undefined
         };
     });
 };
 
 export const evaluateCottonInsects = (input: CottonInsectInput): RecommendationResult[] => {
-    return cottonInsectsData.map((product: any) => {
+    return (cottonInsectsData as CottonInsectRecord[]).map((product) => {
         let status: RecommendationResult['status'] = 'RECOMMEND';
         const rejectReasons: RejectionReason[] = [];
         const warnings: string[] = [];
@@ -254,19 +307,19 @@ export const evaluateCottonInsects = (input: CottonInsectInput): RecommendationR
         return {
             uniqueId: product.unique_id,
             tradeName: product.trade_name,
-            activeIngredient: product.active_ingredient,
+            activeIngredient: product.active_ingredient || 'Not listed',
             phiDays: product.phi_days,
             rate: product.rate_per_acre,
             status,
             rejectReasons,
             warnings,
-            comments: product.comments_structured || product.comments
+            comments: product.comments_structured || product.comments || undefined
         };
     });
 };
 
 // Wrapper functions for specific crops
-export const evaluateSoybeanWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(soybeanWeedsData, input);
-export const evaluateCornWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cornWeedsData, input);
-export const evaluatePeanutWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(peanutWeedsData, input);
-export const evaluateCottonWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cottonWeedsData, input);
+export const evaluateSoybeanWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(soybeanWeedsData as RowCropHerbicideRecord[], input);
+export const evaluateCornWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cornWeedsData as RowCropHerbicideRecord[], input);
+export const evaluatePeanutWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(peanutWeedsData as RowCropHerbicideRecord[], input);
+export const evaluateCottonWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cottonWeedsData as RowCropHerbicideRecord[], input);

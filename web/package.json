@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "vitest run",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "test": "vitest run --configLoader runner",
+    "dev": "vite --configLoader runner",
+    "build": "tsc -b && vite build --configLoader runner",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --configLoader runner"
   },
   "dependencies": {
     "lucide-react": "^0.475.0",

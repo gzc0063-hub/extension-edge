@@ -17,7 +17,7 @@ describe('Modular Deterministic Engine', () => {
         const crossbow = results.find((r: RecommendationResult) => r.tradeName === 'Crossbow');
         expect(crossbow).toBeDefined();
         expect(crossbow!.status).toBe('REJECTED');
-        expect(crossbow!.rejectReasons.some((rr: any) => rr.gateName === 'Dairy Wait')).toBe(true);
+        expect(crossbow!.rejectReasons.some((rr) => rr.gateName === 'Dairy Wait')).toBe(true);
     });
 
     it('Soybean: Seed trait incompatibility rejects product', () => {
@@ -36,7 +36,7 @@ describe('Modular Deterministic Engine', () => {
         const engenia = results.find((r: RecommendationResult) => r.tradeName === 'Engenia');
         expect(engenia).toBeDefined();
         expect(engenia!.status).toBe('REJECTED');
-        expect(engenia!.rejectReasons.some((rr: any) => rr.gateName === 'Trait Tech')).toBe(true);
+        expect(engenia!.rejectReasons.some((rr) => rr.gateName === 'Trait Tech')).toBe(true);
 
         // Enlist One requires Enlist trait. Should be recommended.
         const enlistOne = results.find((r: RecommendationResult) => r.tradeName === 'Enlist One');
@@ -56,6 +56,6 @@ describe('Modular Deterministic Engine', () => {
         const vantacor = results.find((r: RecommendationResult) => r.tradeName === 'VANTACOR');
         expect(vantacor).toBeDefined();
         expect(vantacor!.status).toBe('REJECTED');
-        expect(vantacor!.rejectReasons.some((rr: any) => rr.gateName === 'Threshold')).toBe(true);
+        expect(vantacor!.rejectReasons.some((rr) => rr.gateName === 'Threshold')).toBe(true);
     });
 });
