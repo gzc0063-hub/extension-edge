@@ -28,5 +28,35 @@
     "rate_per_acre": "1.5-2.0 pt",
     "efficacy": { "palmer_amaranth": "E", "morningglory": "G", "crabgrass": "N" },
     "comments": "Enlist soybeans ONLY."
+  },
+  {
+    "unique_id": "IPM-SOY-WEED-03",
+    "trade_name": "Dual Magnum",
+    "active_ingredient": "S-metolachlor",
+    "herbicide_group": "15",
+    "application_type": "PRE",
+    "seed_trait_required": "none",
+    "soil_texture_restriction": "None",
+    "plantback_restriction": "None for major row crops.",
+    "phi_days": 90,
+    "rup_flag": false,
+    "rate_per_acre": "1-2 pt",
+    "efficacy": { "palmer_amaranth": "G", "morningglory": "P", "crabgrass": "E" },
+    "comments": "Good grass and small-seeded broadleaf control."
+  },
+  {
+    "unique_id": "IPM-SOY-WEED-04",
+    "trade_name": "Valor SX",
+    "active_ingredient": "flumioxazin",
+    "herbicide_group": "14",
+    "application_type": "PRE",
+    "seed_trait_required": "none",
+    "soil_texture_restriction": "None",
+    "plantback_restriction": "Varies by rate and rainfall.",
+    "phi_days": 0,
+    "rup_flag": false,
+    "rate_per_acre": "2-3 oz",
+    "efficacy": { "palmer_amaranth": "E", "morningglory": "G", "crabgrass": "P" },
+    "comments": "Excellent PRE broadleaf control."
   }
 ]

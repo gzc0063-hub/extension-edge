@@ -96,18 +96,25 @@ export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[
         }
 
         const efficacyRatings: Record<string, string> = {};
+        let hasControl = false;
+
         for (const weed of input.weedsPresent) {
             const efficacyRecord = efficacyData.find((e: any) => e.unique_id === herbicide.unique_id && e.weed_id === weed);
             if (efficacyRecord) {
                 efficacyRatings[weed] = efficacyRecord.rating;
                 if (efficacyRecord.rating === 'P' || efficacyRecord.rating === 'N') {
-                     status = 'REJECTED';
-                     rejectReasons.push({ reason: `Poor/No control for ${weed}`, gateName: 'Efficacy Gate' });
+                     warnings.push(`Poor/No control for ${weed}`);
+                } else {
+                     hasControl = true;
                 }
             } else {
-                status = 'REJECTED';
-                rejectReasons.push({ reason: `No efficacy data for ${weed}`, gateName: 'Efficacy Gate' });
+                warnings.push(`No efficacy data for ${weed}`);
             }
+        }
+
+        if (input.weedsPresent.length > 0 && !hasControl) {
+             status = 'REJECTED';
+             rejectReasons.push({ reason: `Does not adequately control any of the selected weeds.`, gateName: 'Efficacy Gate' });
         }
 
         return {
@@ -133,7 +140,7 @@ export const evaluateRowCropWeeds = (cropData: any[], input: RowCropWeedInput): 
             rejectReasons.push({ reason: `Not for ${input.applicationType}`, gateName: 'Timing' });
         }
 
-        if (herbicide.seed_trait_required && herbicide.seed_trait_required !== 'conventional') {
+        if (herbicide.seed_trait_required && herbicide.seed_trait_required !== 'conventional' && herbicide.seed_trait_required !== 'none') {
             if (!(input.seedTrait === 'xtend' && herbicide.seed_trait_required === 'roundup_ready') &&
                 !(input.seedTrait === 'enlist' && herbicide.seed_trait_required === 'roundup_ready')) {
                 if (herbicide.seed_trait_required !== input.seedTrait) {
@@ -171,17 +178,25 @@ export const evaluateRowCropWeeds = (cropData: any[], input: RowCropWeedInput): 
 
         // Efficacy
         const efficacyRatings: Record<string, string> = {};
+        let hasControl = false;
+
         for (const weed of input.weedsPresent) {
             if (herbicide.efficacy && herbicide.efficacy[weed]) {
-                efficacyRatings[weed] = herbicide.efficacy[weed];
-                if (herbicide.efficacy[weed] === 'P' || herbicide.efficacy[weed] === 'N') {
-                     status = 'REJECTED';
-                     rejectReasons.push({ reason: `Poor/No control for ${weed}`, gateName: 'Efficacy Gate' });
+                const rating = herbicide.efficacy[weed];
+                efficacyRatings[weed] = rating;
+                if (rating === 'P' || rating === 'N') {
+                     warnings.push(`Poor/No control for ${weed}`);
+                } else {
+                     hasControl = true;
                 }
             } else {
-                status = 'REJECTED';
-                rejectReasons.push({ reason: `No efficacy data for ${weed}`, gateName: 'Efficacy Gate' });
+                warnings.push(`No efficacy data for ${weed}`);
             }
+        }
+
+        if (input.weedsPresent.length > 0 && !hasControl) {
+             status = 'REJECTED';
+             rejectReasons.push({ reason: `Does not adequately control any of the selected weeds.`, gateName: 'Efficacy Gate' });
         }
 
         return {
