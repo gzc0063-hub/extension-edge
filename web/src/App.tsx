@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import {
     evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCornWeeds, evaluatePeanutWeeds, evaluateCottonWeeds, evaluateCottonInsects,
-    type GuideType, type RecommendationResult, type PastureInput, type RowCropWeedInput, type CottonInsectInput, type EfficacyRecord
+    getCottonInsectPestOptions, getRowCropWeedOptions,
+    type GuideType, type RowCropGuideType, type RecommendationResult, type PastureInput, type RowCropWeedInput, type CottonInsectInput, type EfficacyRecord
 } from './engine';
 import { CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
 import efficacyData from './data/efficacy.json';
-import { addWeedSelection, filterWeedOptions, MAX_WEED_SELECTIONS, removeWeedSelection } from './weedSelection';
+import { addWeedSelection, filterWeedOptions, MAX_WEED_SELECTIONS, removeWeedSelection, resolveWeedOption } from './weedSelection';
 
 const ALL_PASTURE_WEEDS = Array.from(new Set((efficacyData as EfficacyRecord[]).map((e) => e.weed_id))).sort();
-const COMMON_ROW_WEEDS = ["palmer_amaranth", "morningglory", "crabgrass", "sicklepod", "florida_beggarweed"];
+const ROW_CROP_GUIDES: RowCropGuideType[] = ['soybean_weeds', 'corn_weeds', 'cotton_weeds', 'peanut_weeds'];
+const COTTON_INSECT_PEST_OPTIONS = getCottonInsectPestOptions();
+
+function isRowCropGuide(guide: GuideType): guide is RowCropGuideType {
+  return ROW_CROP_GUIDES.includes(guide as RowCropGuideType);
+}
 
 function App() {
   const [guideType, setGuideType] = useState<GuideType>('pasture_weeds');
@@ -39,9 +45,10 @@ function App() {
   };
 
   const addPastureWeed = (weed: string) => {
+    const resolvedWeed = resolveWeedOption(ALL_PASTURE_WEEDS, weed) || weed;
     setPastureInput(prev => ({
       ...prev,
-      weedsPresent: addWeedSelection(prev.weedsPresent, weed)
+      weedsPresent: addWeedSelection(prev.weedsPresent, resolvedWeed)
     }));
     setPastureWeedQuery('');
   };
@@ -54,9 +61,11 @@ function App() {
   };
 
   const addRowCropWeed = (weed: string) => {
+    const rowCropWeedOptions = isRowCropGuide(guideType) ? getRowCropWeedOptions(guideType) : [];
+    const resolvedWeed = resolveWeedOption(rowCropWeedOptions, weed) || weed;
     setRowCropInput(prev => ({
       ...prev,
-      weedsPresent: addWeedSelection(prev.weedsPresent, weed)
+      weedsPresent: addWeedSelection(prev.weedsPresent, resolvedWeed)
     }));
     setRowWeedQuery('');
   };
@@ -71,9 +80,10 @@ function App() {
   const recommended = results.filter(r => r.status === 'RECOMMEND');
   const rejected = results.filter(r => r.status === 'REJECTED');
 
-  const isRowCropWeeds = ['soybean_weeds', 'corn_weeds', 'cotton_weeds', 'peanut_weeds'].includes(guideType);
+  const isRowCropWeeds = isRowCropGuide(guideType);
+  const rowCropWeedOptions = isRowCropWeeds ? getRowCropWeedOptions(guideType) : [];
   const pastureWeedSuggestions = filterWeedOptions(ALL_PASTURE_WEEDS, pastureWeedQuery, pastureInput.weedsPresent);
-  const rowWeedSuggestions = filterWeedOptions(COMMON_ROW_WEEDS, rowWeedQuery, rowCropInput.weedsPresent);
+  const rowWeedSuggestions = filterWeedOptions(rowCropWeedOptions, rowWeedQuery, rowCropInput.weedsPresent);
   const canAddPastureWeed = pastureInput.weedsPresent.length < MAX_WEED_SELECTIONS;
   const canAddRowWeed = rowCropInput.weedsPresent.length < MAX_WEED_SELECTIONS;
 
@@ -95,7 +105,15 @@ function App() {
               className="w-full p-2 border rounded-md font-bold bg-gray-50"
               value={guideType}
               onChange={(e) => {
-                  setGuideType(e.target.value as GuideType);
+                  const nextGuide = e.target.value as GuideType;
+                  setGuideType(nextGuide);
+                  if (isRowCropGuide(nextGuide)) {
+                    setRowCropInput(prev => ({ ...prev, weedsPresent: [] }));
+                    setRowWeedQuery('');
+                  }
+                  if (nextGuide === 'pasture_weeds') {
+                    setPastureWeedQuery('');
+                  }
                   setResults([]);
               }}
             >
@@ -301,8 +319,9 @@ function App() {
                     <div>
                       <label className="block text-sm mb-1">Pest Target</label>
                       <select className="w-full p-2 border rounded-md" value={cottonInsectInput.pestTarget} onChange={e => setCottonInsectInput({...cottonInsectInput, pestTarget: e.target.value})}>
-                        <option value="bollworm">Bollworm / Tobacco Budworm</option>
-                        <option value="aphids">Cotton Aphids</option>
+                        {COTTON_INSECT_PEST_OPTIONS.map((pest) => (
+                          <option key={pest} value={pest}>{pest.replace(/_/g, ' ')}</option>
+                        ))}
                       </select>
                     </div>
                     <div>

@@ -4,6 +4,10 @@ export function normalizeWeedName(weed: string): string {
   return weed.trim().replace(/\s+/g, ' ')
 }
 
+function normalizeForMatch(value: string): string {
+  return normalizeWeedName(value).toLowerCase().replace(/_/g, ' ')
+}
+
 export function addWeedSelection(selected: string[], weed: string): string[] {
   const normalized = normalizeWeedName(weed)
 
@@ -16,6 +20,12 @@ export function addWeedSelection(selected: string[], weed: string): string[] {
 
 export function removeWeedSelection(selected: string[], weed: string): string[] {
   return selected.filter((selectedWeed) => selectedWeed !== weed)
+}
+
+export function resolveWeedOption(options: string[], query: string): string | undefined {
+  const normalizedQuery = normalizeForMatch(query)
+
+  return options.find((weed) => normalizeForMatch(weed) === normalizedQuery)
 }
 
 export function filterWeedOptions(options: string[], query: string, selected: string[]): string[] {

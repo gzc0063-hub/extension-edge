@@ -1,5 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { evaluatePastureWeeds, evaluateSoybeanWeeds, evaluateCottonInsects, type PastureInput, type RowCropWeedInput, type CottonInsectInput, type RecommendationResult } from './engine';
+import {
+    evaluatePastureWeeds,
+    evaluateSoybeanWeeds,
+    evaluateCottonInsects,
+    getCottonInsectPestOptions,
+    getRowCropWeedOptions,
+    type PastureInput,
+    type RowCropWeedInput,
+    type CottonInsectInput,
+    type RecommendationResult
+} from './engine';
 
 describe('Modular Deterministic Engine', () => {
 
@@ -57,5 +67,14 @@ describe('Modular Deterministic Engine', () => {
         expect(vantacor).toBeDefined();
         expect(vantacor!.status).toBe('REJECTED');
         expect(vantacor!.rejectReasons.some((rr) => rr.gateName === 'Threshold')).toBe(true);
+    });
+
+    it('exposes weed options from the selected crop dataset', () => {
+        expect(getRowCropWeedOptions('soybean_weeds')).toEqual(['crabgrass', 'morningglory', 'palmer_amaranth']);
+        expect(getRowCropWeedOptions('peanut_weeds')).toEqual(['florida_beggarweed', 'palmer_amaranth', 'sicklepod']);
+    });
+
+    it('exposes cotton insect pest options from the insect dataset', () => {
+        expect(getCottonInsectPestOptions()).toEqual(['bollworm']);
     });
 });

@@ -7,6 +7,7 @@ import peanutWeedsData from './data/peanut_weeds.json';
 import cottonWeedsData from './data/cotton_weeds.json';
 
 export type GuideType = "pasture_weeds" | "soybean_weeds" | "cotton_weeds" | "corn_weeds" | "peanut_weeds" | "cotton_insects";
+export type RowCropGuideType = Extract<GuideType, "soybean_weeds" | "cotton_weeds" | "corn_weeds" | "peanut_weeds">;
 
 export interface HerbicideRecord {
     unique_id: string;
@@ -106,6 +107,23 @@ export interface RecommendationResult {
     efficacyRatings?: Record<string, string>;
     comments?: string;
 }
+
+const rowCropDataByGuide: Record<RowCropGuideType, RowCropHerbicideRecord[]> = {
+    soybean_weeds: soybeanWeedsData as RowCropHerbicideRecord[],
+    cotton_weeds: cottonWeedsData as RowCropHerbicideRecord[],
+    corn_weeds: cornWeedsData as RowCropHerbicideRecord[],
+    peanut_weeds: peanutWeedsData as RowCropHerbicideRecord[],
+};
+
+const sortedUnique = (values: string[]): string[] => Array.from(new Set(values.filter(Boolean))).sort();
+
+export const getRowCropWeedOptions = (guideType: RowCropGuideType): string[] => {
+    return sortedUnique(rowCropDataByGuide[guideType].flatMap((herbicide) => Object.keys(herbicide.efficacy || {})));
+};
+
+export const getCottonInsectPestOptions = (): string[] => {
+    return sortedUnique((cottonInsectsData as CottonInsectRecord[]).map((product) => product.pest_target));
+};
 
 export const evaluatePastureWeeds = (input: PastureInput): RecommendationResult[] => {
     return (herbicidesData as HerbicideRecord[]).map((herbicide) => {
@@ -319,7 +337,7 @@ export const evaluateCottonInsects = (input: CottonInsectInput): RecommendationR
 };
 
 // Wrapper functions for specific crops
-export const evaluateSoybeanWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(soybeanWeedsData as RowCropHerbicideRecord[], input);
-export const evaluateCornWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cornWeedsData as RowCropHerbicideRecord[], input);
-export const evaluatePeanutWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(peanutWeedsData as RowCropHerbicideRecord[], input);
-export const evaluateCottonWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(cottonWeedsData as RowCropHerbicideRecord[], input);
+export const evaluateSoybeanWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(rowCropDataByGuide.soybean_weeds, input);
+export const evaluateCornWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(rowCropDataByGuide.corn_weeds, input);
+export const evaluatePeanutWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(rowCropDataByGuide.peanut_weeds, input);
+export const evaluateCottonWeeds = (input: RowCropWeedInput) => evaluateRowCropWeeds(rowCropDataByGuide.cotton_weeds, input);
